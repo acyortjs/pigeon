@@ -1,0 +1,26 @@
+<div id="posts" class="center">
+
+    <ul>
+    {{#posts}}
+        <li>
+
+        <div class="post">
+            <h2><a href="{{{url}}}">{{{title}}}</a></h2>
+            <p class="time">{{{time.MMM}}} {{{time.DD}}}, {{{time.YYYY}}}</p>
+            <div>{{{summary}}}</div>
+        </div>
+
+        <a class="author" href="{{{author.url}}}" target="_blank">
+            <img src="{{{author.avatar}}}" />
+        </a>
+
+        </li>
+    {{/posts}}
+    </ul>
+
+    <div id="pagination">
+        <a rel="prev" href="{{{prev}}}">← Newer Posts</a>
+        <a rel="next" href="{{{next}}}">Older Posts →</a>
+    </div>
+
+</div>
