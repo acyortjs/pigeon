@@ -1,18 +1,32 @@
+<div class="categories">
+    <div class="center">
+        <a class="@class@" href="{{{site.root}}}/">全部</a>
+    {{#categories}}
+    <a class="{{{class}}}" href="{{{url}}}">{{{name}}}</a>
+    {{/categories}}
+    </div>
+</div>
+
 <div id="posts" class="center">
 
     <ul>
     {{#posts}}
         <li>
 
-        <div class="post">
-            <h2><a href="{{{url}}}">{{{title}}}</a></h2>
-            <p class="time">{{{time.MMM}}} {{{time.DD}}}, {{{time.YYYY}}}</p>
-            <div>{{{summary}}}</div>
-        </div>
+            <img src="{{{thumb}}}" />
 
-        <a class="author" href="{{{author.url}}}" target="_blank">
-            <img src="{{{author.avatar}}}" />
-        </a>
+            <h3><a href="{{{url}}}">{{{title}}}</a></h3>
+            <p class="time">{{{time.MMM}}} {{{time.DD}}}, {{{time.YYYY}}}</p>
+
+            <a class="author" href="{{{author.url}}}" target="_blank">
+                <img src="{{{author.avatar}}}" />
+            </a>
+
+            <div class="label">
+            {{#tags}}
+            <p>{{{name}}}</p>
+            {{/tags}}
+            </div>
 
         </li>
     {{/posts}}

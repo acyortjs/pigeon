@@ -2,14 +2,16 @@
 <html lang="en">
 <head>
 @import(extend/head.html, {
-    "title": "{{{name}}} - {{{site.title}}}"
+    "title": "{{{heading}}} - {{{site.title}}}"
 })
 </head>
 <body>
 
 @import(extend/header.html)
 
-@import(extend/content.html)
+@import(extend/content.html, {
+    "class": ""
+})
 
 @import(extend/fooetr.html)
 

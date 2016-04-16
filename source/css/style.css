@@ -20,6 +20,32 @@ body {
     overflow-y: scroll;
 }
 
+.header {
+    background: #30B3DF;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+}
+.header a {
+    color: #fff;
+    text-decoration: none;
+    padding: 13px 0 14px;
+    display: inline-block;
+    line-height: 1;
+}
+
+.categories {
+    box-shadow: 0 0 1px 0 rgba(0,0,0,0.1),inset 0 -1px 0 0 rgba(0,0,0,0.1);
+    background: #fff;
+}
+.categories a {
+    color: #666;
+    font-size: 16px;
+    padding: 10px 16px;
+    text-decoration: none;
+    display: inline-block;
+}
+
 .center {
     position: relative;
     margin: 0 auto;

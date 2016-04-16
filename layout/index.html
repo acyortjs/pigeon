@@ -4,12 +4,15 @@
 @import(extend/head.html, {
     "title": "{{{site.title}}}"
 })
+
 </head>
 <body>
 
 @import(extend/header.html)
 
-@import(extend/content.html)
+@import(extend/content.html, {
+    "class": "current_category"
+})
 
 @import(extend/fooetr.html)
 
