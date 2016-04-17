@@ -1,40 +1,32 @@
 <div class="categories">
-    <div class="center">
-        <a class="@class@" href="{{{site.root}}}/">全部</a>
+    <div>
+    <a class="@class@" href="{{{site.root}}}/">全部 [{{{total}}}]</a>
     {{#categories}}
-    <a class="{{{class}}}" href="{{{url}}}">{{{name}}}</a>
+    <a class="{{{class}}}" href="{{{url}}}">{{{name}}} [{{{number}}}]</a>
     {{/categories}}
     </div>
 </div>
 
-<div id="posts" class="center">
+<ul class="lists center">
 
-    <ul>
     {{#posts}}
         <li>
 
-            <img src="{{{thumb}}}" />
-
-            <h3><a href="{{{url}}}">{{{title}}}</a></h3>
-            <p class="time">{{{time.MMM}}} {{{time.DD}}}, {{{time.YYYY}}}</p>
+            <a class="entry" href="{{{url}}}">
+                <h3>{{{title}}}</h3>
+                <p class="time">{{{time.M}}}月 {{{time.DD}}}, {{{time.YYYY}}}</p>
+            </a>
 
             <a class="author" href="{{{author.url}}}" target="_blank">
                 <img src="{{{author.avatar}}}" />
             </a>
 
-            <div class="label">
-            {{#tags}}
-            <p>{{{name}}}</p>
-            {{/tags}}
-            </div>
-
         </li>
     {{/posts}}
-    </ul>
 
-    <div id="pagination">
-        <a rel="prev" href="{{{prev}}}">← Newer Posts</a>
-        <a rel="next" href="{{{next}}}">Older Posts →</a>
-    </div>
+</ul>
 
+<div class="pagination center">
+    <a rel="prev" href="{{{prev}}}">← Newer Posts</a>
+    <a rel="next" href="{{{next}}}">Older Posts →</a>
 </div>

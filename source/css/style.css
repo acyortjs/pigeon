@@ -35,31 +35,70 @@ body {
 }
 
 .categories {
-    box-shadow: 0 0 1px 0 rgba(0,0,0,0.1),inset 0 -1px 0 0 rgba(0,0,0,0.1);
     background: #fff;
-    overflow: hidden;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 30px;
+    margin-top: 30px;
+}
+.categories > div {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
 }
 .categories a {
-    color: #777;
     font-size: 14px;
-    padding: 10px;
+    display: inline-block;
     text-decoration: none;
-    float: left;
+    color: #666;
+    padding: 5px 13px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    margin: 10px 5px;
 }
-.categories a.current_category {
-    background: #EAF5F9;
-    color: #558FA2;
+.categories a.current_category, .categories a:hover {
+    background: #f9f9f9;
+}
+
+.lists.center {
+    margin-top: 50px;
+}
+.lists li {
+    padding: 20px 14px;
+    background: #fff;
     position: relative;
 }
-.categories a.current_category:after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 3px;
-    background: #58c3e6;
-    left: 0;
+.lists li:hover {
+    background: #F6F7F7;
 }
+.entry {
+    display: block;
+    text-decoration: none;
+}
+.entry h3 {
+    color: #485763;;
+    font-size: 18px;
+}
+.entry p {
+    color: #969696;;
+    font-size: 12px;
+    margin-top: 10px
+}
+.author {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    right: 14px;
+    overflow: hidden;
+    top: 50%;
+    margin-top: -15px;
+}
+.author img {
+    width: 100%;
+    display: block;
+    height: auto;
+}
+
 
 .center {
     position: relative;
