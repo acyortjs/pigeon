@@ -7,16 +7,14 @@
 </head>
 <body>
 
-@import(extend/header.html)
+@import(extend/header.html, {
+    "back": "<span>« 返回</span>"
+})
 
-<div id="post" class="center">
+<div class="post center">
 
-    <h1>{{{title}}}</h1>
-    <p><a href="{{{author.url}}}">{{{author.name}}}</a> Posted at {{{time.MMM}}} {{{time.DD}}}, {{{time.YYYY}}} . -
-    {{#categories}}
-    <a href="{{{url}}}">{{{name}}}</a> -
-    {{/categories}}
-    </p>
+    <h2>{{{title}}}</h2>
+    <p><a href="{{{author.url}}}">{{{author.name}}}</a> 发表于 {{{time.M}}}月 {{{time.DD}}}, {{{time.YYYY}}} .</p>
 
     <div class="content">{{{body}}}</div>
 
