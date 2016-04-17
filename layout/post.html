@@ -8,7 +8,7 @@
 <body>
 
 @import(extend/header.html, {
-    "back": "<span>« 返回</span>"
+    "back": "<span id=\"back\">« 返回</span>"
 })
 
 <div class="post center">
@@ -23,4 +23,21 @@
 @import(extend/fooetr.html)
 
 </body>
+
+<script>
+Array.prototype.slice.call(document.links).forEach(function(link){
+   if (link.hostname != window.location.hostname) {
+       link.target = '_blank'
+   }
+})
+
+document.getElementById('back').addEventListener('click', function() {
+    if (document.referrer.indexOf(location.host) > -1) {
+        history.back()
+    } else {
+        location.href = document.getElementById('title').href
+    }
+})
+</script>
+
 </html>
