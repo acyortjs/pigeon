@@ -6,34 +6,25 @@
 {% endblock %}
 
 {% block content %}
-<div id="posts" class="center">
+<div class="wrap">
     {% spaceless %}
 
     {% for id in index.posts %}
     {% set post = helper.post(id) %}
 
-    {% if loop.first %}<div>{% endif %}
+    {% if loop.first %}<div class="posts">{% endif %}
 
-        <a href="{{ post.url }}">{{ post.title }}
-        {% if post.thumb %}
+    <a href="{{ post.url }}">
+    <img class="thumb" width="{{ post.thumb.width }}" height="{{ post.thumb.height }}" src="{{ post.thumb.src }}" />
+    </a>
 
-        {% if data.config.thumbnail_size %}
-        <img class="thumb" width="{{ post.thumb.width }}" height="{{ post.thumb.height }}" src="{{ post.thumb.src }}" />
-        {% else %}
-        {% endif %}
-
-        {% endif %}
-        </a>
-
-    {% if (loop.index % 3 === 0 && loop.index != index.posts.length) %}</div><div>{% endif %}
-
+    {% if (loop.index % 3 === 0 && loop.index != index.posts.length) %}</div><div class="posts">{% endif %}
     {% if loop.last %}</div>{% endif %}
 
     {% endfor %}
 
     {% endspaceless %}
-
-    {{ pagination.render(index) }}
-
 </div>
+
+{{ pagination.render(index) }}
 {% endblock %}
