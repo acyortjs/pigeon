@@ -1,43 +1,74 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-@import(extend/head.html, {
-    "title": "{{{title}}} - {{{site.title}}}"
-})
-</head>
-<body>
+{% extends 'layout.html' %}
 
-@import(extend/header.html, {
-    "back": "<span id=\"back\">« 返回</span>"
-})
+{% block title %}
+{{ post.title }} | {{ data.config.title }}
+{% endblock %}
 
-<div class="post center">
+{% block content %}
+<div id="post" class="center">
 
-    <h2>{{{title}}}</h2>
-    <p><a href="{{{author.url}}}">{{{author.name}}}</a> 发表于 {{{time.M}}}月 {{{time.DD}}}, {{{time.YYYY}}} .</p>
+    <h1>{{ post.title }}</h1>
 
-    <div class="content">{{{body}}}</div>
+    <p><a href="{{ post.author.url }}">{{ post.author.name }}</a> Posted at {{ helper.time(post.created, 'MMM DD, YYYY') }} . -
+
+    {% for category in post.categories %}
+    <a href="{{ category.url }}">{{ category.name}}</a> -
+    {% endfor %}
+    </p>
+
+    {% if post.toc %}
+    <div class="toc">
+    <h3>文章目录</h3>
+    {% autoescape false %}{{ post.toc }}{% endautoescape %}
+    </div>
+    {% endif %}
+
+    <div class="content">{% autoescape false %}{{ post.body }}{% endautoescape %}</div>
+
+    {% if post.tags.length %}
+    <div class="label">
+    {% for tag in post.tags %}
+    <div><a href="{{ tag.url }}">#{{ tag.name }}</a></div>
+    {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="relate">
+    {% if post.prev %}
+    {% set prev = helper.post(post.prev) %}
+    <a rel="prev" href="{{ prev.url }}">← {{ prev.title }}</a>
+    {% endif %}
+
+    {% if post.next %}
+    {% set next = helper.post(post.next) %}
+    <a rel="next" href="{{ next.url }}">{{ next.title }} →</a>
+    {% endif %}
+    </div>
+
+    <div class="comment_list hide" id="disqus_thread"></div>
+    <div id="duoshuo_thread" class="comment_list hide ds-thread" data-thread-key="{{ post.id }}" data-title="" data-url=""></div>
+
+    <button class="hide" data-id="{{ post.id }}" id="comment">Add Comments</button>
 
 </div>
+{% endblock %}
 
-@import(extend/fooetr.html)
-
-</body>
-
+{% block script %}
+{% if data.config.disqus %}
 <script>
-Array.prototype.slice.call(document.links).forEach(function(link){
-   if (link.hostname != window.location.hostname) {
-       link.target = '_blank'
-   }
-})
-
-document.getElementById('back').addEventListener('click', function() {
-    if (document.referrer.indexOf(location.host) > -1) {
-        history.back()
-    } else {
-        location.href = document.getElementById('title').href
-    }
-})
+var c = {
+    name: '{{ data.config.disqus }}',
+    url: '//{{ data.config.disqus }}.disqus.com/embed.js'
+}
 </script>
+{% else %}
+<script>
+var c = {
+    name: '{{ data.config.duoshuo }}',
+    url: '//static.duoshuo.com/embed.js'
+}
+</script>
+{% endif %}
 
-</html>
+<script src="{{ data.config.root }}/js/comment.js"></script>
+{% endblock %}
