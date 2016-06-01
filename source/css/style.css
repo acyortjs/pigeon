@@ -18,6 +18,7 @@ body {
     position: relative;
     overflow-x: hidden;
     overflow-y: scroll;
+    background: #f0f0f0;
 }
 a {
     text-decoration: none;
@@ -45,12 +46,19 @@ a {
 }
 .posts {
     position: relative;
-    height: 400px;
+}
+.posts img {
+    display: block;
 }
 .posts a {
     position: absolute;
     top: 0;
     z-index: 0;
+    padding: 30px;
+    background: rgba(255, 255, 255, .7);
+}
+.posts a:hover {
+    z-index: 10;
 }
 .posts a:nth-child(1) {
     left: 0;
