@@ -19,3 +19,45 @@ body {
     overflow-x: hidden;
     overflow-y: scroll;
 }
+a {
+    text-decoration: none;
+}
+
+.header {
+    text-align: center;
+    padding: 70px 0;
+    color: #2E2E40;
+    font-size: 24px;
+    line-height: 1;
+}
+.header em {
+    font-style: normal;
+    font-size: 100px;
+    color: #333;
+}
+.header a {
+    color: #2E2E40;
+}
+
+.wrap {
+    width: 80%;
+    margin: 0 auto;
+}
+.posts {
+    position: relative;
+    height: 400px;
+}
+.posts a {
+    position: absolute;
+    top: 0;
+    z-index: 0;
+}
+.posts a:nth-child(1) {
+    left: 0;
+}
+.posts a:nth-child(2) {
+    left: 33.3333333%;
+}
+.posts a:nth-child(3) {
+    left: 66.6666666%;
+}
