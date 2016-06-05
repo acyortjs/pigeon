@@ -5,20 +5,16 @@ body, div, h1, h2, h3, h4, h5, p, ul, li {
     font-weight: normal;
     list-style: none;
 }
-html {
-    -webkit-text-size-adjust: 100%;
-}
 html, body {
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     -webkit-font-smoothing: antialiased;
-    background: #fff;
+    background: #f8f8f8;
 }
 body {
     font-family: "Hiragino Sans GB","Hiragino Sans GB W3","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
     position: relative;
     overflow-x: hidden;
     overflow-y: scroll;
-    background: #f0f0f0;
 }
 a {
     text-decoration: none;
@@ -43,6 +39,7 @@ a {
 .wrap {
     width: 80%;
     margin: 0 auto;
+    max-width: 1200px;
 }
 .posts {
     position: relative;
@@ -68,4 +65,25 @@ a {
 }
 .posts a:nth-child(3) {
     left: 66.6666666%;
+}
+
+.post {
+    width: 80%;
+    margin: 30px auto 0;
+    max-width: 1000px;
+    position: relative;
+}
+.info {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.content {
+    margin-left: 200px;
+}
+.content img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin-top: 40px;
 }

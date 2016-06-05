@@ -13,7 +13,6 @@ $(function() {
     })
 
     function position(dom, w) {
-
         var H = Math.max.apply(Math, dom.find('a').map(function() {
             return $(this).height()
         })) + space - padding * 2;
@@ -35,7 +34,6 @@ $(function() {
                 'margin-left': l +'px'
             })
         })
-
     }
 
 })

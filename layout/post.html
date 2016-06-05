@@ -8,28 +8,25 @@
 <div class="post">
 
     <div class="info">
-        <h1>{{ post.title }}</h1>
-        <p>{{ helper.time(post.created, 'MMM DD, YYYY') }}</p>
+        <span>{{ helper.time(post.created, 'MMM DD, YYYY') }}</span>
         <a href="{{ post.customs.url }}">View Original</a>
-        <div class="relate">
-            {% if post.prev %}
-            {% set prev = helper.post(post.prev) %}
-            <a rel="prev" href="{{ prev.url }}">← Previous</a>
-            {% endif %}
-
-            {% if post.next %}
-            {% set next = helper.post(post.next) %}
-            <a rel="next" href="{{ next.url }}">Next →</a>
-            {% endif %}
-        </div>
     </div>
 
     <div class="content">{% autoescape false %}{{ post.body }}{% endautoescape %}</div>
 
-</div>
-{% endblock %}
+    <div class="relate">
+        {% if post.prev %}
+        {% set prev = helper.post(post.prev) %}
+        <a rel="prev" href="{{ prev.url }}">← {{ prev.title }}</a>
+        {% endif %}
 
-{% block script %}
-<script src="{{ data.config.root }}/js/zepto.js" ></script>
-<script src="{{ data.config.root }}/js/script.js" ></script>
+        <span>/</span>
+
+        {% if post.next %}
+        {% set next = helper.post(post.next) %}
+        <a rel="next" href="{{ next.url }}">{{ next.title }} →</a>
+        {% endif %}
+    </div>
+
+</div>
 {% endblock %}

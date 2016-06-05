@@ -1,5 +1,9 @@
 <div class="header">
-    <span>{{ data.config.description }}</span>
-    <em>/</em>
+    {% if post.title %}
+    <p>{{ post.title }}</p>
+    {% else %}
+    <p>{{ data.config.description }}</p>
+    {% endif %}
+    <span>/</span>
     <a href="{{ data.config.root }}/">{{ data.config.title }}</a>
 </div>
