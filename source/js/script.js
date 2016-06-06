@@ -203,12 +203,18 @@ colors = Object.keys(colors).map(function(key) {
     return colors[key]
 })
 
+function _random(n, m) {
+    return Math.floor(Math.random() * (m - n + 1) + n)
+}
+
 var padding = 30;
 var space = 200;
 
-$(function() {
+document.addEventListener("DOMContentLoaded", function() {
 
-    var text = document.querySelectorAll('.header a')[0].innerText;
+    // text colors
+    var a = document.querySelectorAll('.header a')[0];
+    var text = a.innerText;
 
     var randomColors = colors.sort(function() {
         return Math.random() - 0.5
@@ -218,42 +224,37 @@ $(function() {
         return '<span style="color:'+ randomColors[i] +'">'+ t +'</span>'
     }).join('')
 
-    document.querySelectorAll('.header a')[0].innerHTML = text;
+    a.innerHTML = text;
 
-    var W = $('.wrap').width();
+    // random grid
+    var W = document.querySelectorAll('.wrap')[0].offsetWidth;
 
-    $('.posts').each(function() {
-    
-        position($(this), W)
-    
+    Array.prototype.slice.call(document.querySelectorAll('.posts')).forEach(function(posts) {
+        position(posts, W)
     })
 
     function position(dom, w) {
-        var H = Math.max.apply(Math, dom.find('a').map(function() {
-            return $(this).height()
+
+        var as = Array.prototype.slice.call(dom.querySelectorAll('a'));
+
+        var H = Math.max.apply(Math, as.map(function(a) {
+            return a.offsetHeight
         })) + space - padding * 2;
 
         // set outer height
-        dom.height(H)
+        dom.style.height = H +'px';
 
-        dom.find('a').each(function() {
-            var _this = $(this);
-            
-            var h = _this.height();
-            var w = _this.width();
+        as.forEach(function(a) {
+            var h = a.offsetHeight;
+            var w = a.offsetWidth;
 
             var t = _random(-h / 4, H - h / 4 * 3);
             var l = _random(-w / 4, W / 3 - w / 4 * 3);
-            
-            _this.css({
-                'margin-top': t +'px',
-                'margin-left': l +'px'
-            })
+
+            a.style.marginTop = t +'px';
+            a.style.marginLeft = l +'px';
         })
+
     }
 
 })
-
-function _random(n, m) {
-    return Math.floor(Math.random() * (m - n + 1) + n)
-}
