@@ -27,6 +27,10 @@
 
         <span>/</span>
 
+        <a href="{{ data.config.root }}/">index</a>
+
+        <span>/</span>
+
         {% if post.next %}
         {% set next = helper.post(post.next) %}
         <a rel="next" href="{{ next.url }}">{{ next.title }} →</a>

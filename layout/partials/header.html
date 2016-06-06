@@ -1,7 +1,6 @@
 <div class="header">
     {% if post.title %}
-    <span>{{ post.title }}</span>
-    <a href="{{ data.config.root }}/">{{ data.config.title }}</a>
+    {{ post.title }}
     {% else %}
     <a href="{{ data.config.root }}/">{{ data.config.title }}</a>
     {% endif %}
