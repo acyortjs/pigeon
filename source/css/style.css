@@ -1,9 +1,14 @@
+@font-face {
+    font-family: 'Sansation_Light';
+    src: url('Sansation_Light.ttf') format('truetype');
+}
 
 body, div, h1, h2, h3, h4, h5, p, ul, li {
     margin: 0;
     padding: 0;
     font-weight: normal;
     list-style: none;
+    line-height: 1;
 }
 html, body {
     -webkit-tap-highlight-color: rgba(0,0,0,0);
@@ -11,7 +16,7 @@ html, body {
     background: #f8f8f8;
 }
 body {
-    font-family: "Hiragino Sans GB","Hiragino Sans GB W3","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+    font-family: 'Sansation_Light', sans-serif;
     position: relative;
     overflow-x: hidden;
     overflow-y: scroll;
@@ -22,24 +27,26 @@ a {
 
 .header {
     text-align: center;
-    padding: 70px 0;
+    padding: 100px 0 20px;
     color: #2E2E40;
-    font-size: 24px;
-    line-height: 1;
+    font-size: 20px;
 }
-.header em {
-    font-style: normal;
-    font-size: 100px;
-    color: #333;
+.header > * {
+    display: inline-block;
+    vertical-align: middle;
 }
 .header a {
     color: #2E2E40;
+}
+.header span {
+    font-size: 60px;
 }
 
 .wrap {
     width: 80%;
     margin: 0 auto;
-    max-width: 1200px;
+    padding: 70px 0;
+    max-width: 1000px;
 }
 .posts {
     position: relative;
@@ -69,21 +76,50 @@ a {
 
 .post {
     width: 80%;
-    margin: 30px auto 0;
+    margin: 0 auto;
     max-width: 1000px;
-    position: relative;
+    padding: 0 0 140px;
+    text-align: center;
 }
-.info {
-    position: absolute;
-    left: 0;
-    top: 0;
+.info h2 {
+    font-size: 40px;
+    margin: 0;
+}
+.info span {
+    color: #777;
+    margin: 0 5px;
+    font-size: 14px;
 }
 .content {
-    margin-left: 200px;
+    text-align: center;
+    margin-top: 70px;
 }
 .content img {
     display: block;
     max-width: 100%;
     height: auto;
+    margin: 40px auto 0;
+}
+.content p {
     margin-top: 40px;
+    font-size: 16px;
+    color: #424242;
+}
+.content a {
+    color: #DA1D69;
+    border-bottom: 1px solid #dcdcdc;
+    padding-bottom: 5px;
+}
+.content a:hover {
+    border-bottom: 1px solid #DA1D69;
+}
+.relate {
+    margin-top: 100px;
+    font-size: 30px;
+    color: #424242;
+}
+.relate a {
+    font-size: 16px;
+    color: #393939;
+    vertical-align: bottom;
 }
