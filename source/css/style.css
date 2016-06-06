@@ -33,7 +33,16 @@ a {
 }
 .header a {
     font-family: monospace;
-    letter-spacing: 1px;
+    font-size: 40px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+.header a span {
+    display: inline-block;
+    background: rgba(255, 255, 255, .7);
+    padding: 4px 8px;
+    margin: 0 8px;
 }
 
 .wrap {
