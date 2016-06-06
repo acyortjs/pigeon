@@ -197,12 +197,28 @@ var colors = {
     "AGS Script": "#B9D9FF", 
     "Dogescript": "#cca760", 
     "nesC": "#94B0C7"
-};
+}
+
+colors = Object.keys(colors).map(function(key) {
+    return colors[key]
+})
 
 var padding = 30;
 var space = 200;
 
 $(function() {
+
+    var text = document.querySelectorAll('.header a')[0].innerText;
+
+    var randomColors = colors.sort(function() {
+        return Math.random() - 0.5
+    }).slice(0, text.length)
+
+    text = text.split('').map(function(t, i) {
+        return '<span style="color:'+ randomColors[i] +'">'+ t +'</span>'
+    }).join('')
+
+    document.querySelectorAll('.header a')[0].innerHTML = text;
 
     var W = $('.wrap').width();
 
