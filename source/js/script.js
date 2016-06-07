@@ -253,6 +253,15 @@ document.addEventListener("DOMContentLoaded", function() {
 
             a.style.marginTop = t +'px';
             a.style.marginLeft = l +'px';
+
+            // show image
+            var img = a.querySelectorAll('img')[0];
+            var image = new Image();
+            image.onload = function() {
+                img.setAttribute('src', this.src)
+                img.classList.add('show')
+            }
+            image.src = img.getAttribute('data-src');
         })
 
     }
