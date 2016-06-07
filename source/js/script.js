@@ -221,7 +221,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }).slice(0, text.length)
 
     text = text.split('').map(function(t, i) {
-        return '<span style="color:'+ randomColors[i] +'">'+ t +'</span>'
+        return '<span style="transform:rotate('+ _random(-30, 30) +'deg);color:'+ randomColors[i] +'">'+ t +'</span>'
     }).join('')
 
     a.innerHTML = text;
@@ -248,7 +248,7 @@ document.addEventListener("DOMContentLoaded", function() {
             var h = a.offsetHeight;
             var w = a.offsetWidth;
 
-            var t = _random(-h / 4, H - h / 4 * 3);
+            var t = _random(-h / 8, H - h / 8 * 7);
             var l = _random(-w / 4, W / 3 - w / 4 * 3);
 
             a.style.marginTop = t +'px';
