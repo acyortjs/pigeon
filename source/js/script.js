@@ -208,7 +208,7 @@ function _random(n, m) {
 }
 
 var padding = 30;
-var space = 200;
+var space = 160;
 
 document.addEventListener("DOMContentLoaded", function() {
 
@@ -249,7 +249,7 @@ document.addEventListener("DOMContentLoaded", function() {
             var w = a.offsetWidth;
 
             var t = _random(-h / 8, H - h / 8 * 7);
-            var l = _random(-w / 4, W / 3 - w / 4 * 3);
+            var l = _random(-w / 8, W / 3 - w / 8 * 7);
 
             a.style.marginTop = t +'px';
             a.style.marginLeft = l +'px';
