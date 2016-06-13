@@ -214,7 +214,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // text colors
     var a = document.querySelectorAll('.header a')[0];
-    var text = a.innerText;
+    var text = a.innerText || a.textContent;
 
     var randomColors = colors.sort(function() {
         return Math.random() - 0.5
@@ -254,16 +254,43 @@ document.addEventListener("DOMContentLoaded", function() {
             a.style.marginTop = t +'px';
             a.style.marginLeft = l +'px';
 
-            // show image
             var img = a.querySelectorAll('img')[0];
-            var image = new Image();
-            image.onload = function() {
-                img.setAttribute('src', this.src)
-                img.classList.add('show')
+            if (imgInViewport(img) && !img.src) {
+                loadImage(img)
             }
-            image.src = img.getAttribute('data-src');
         })
 
     }
+
+    // show images
+
+    function loadImage(el) {
+        var image = new Image();
+        image.onload = function() {
+            el.setAttribute('src', this.src)
+            el.classList.add('show')
+        }
+        image.src = el.getAttribute('data-src');
+    }
+
+    function imgInViewport(img) {
+        var rect = img.getBoundingClientRect();
+
+        return (
+            rect.top >= 0   &&
+            rect.left >= 0  &&
+            rect.top <= (window.innerHeight || document.documentElement.clientHeight)
+        )
+    }
+
+    window.addEventListener('scroll', function() {
+        var imgs = document.querySelectorAll('.wrap img');
+
+        Array.prototype.slice.call(imgs).forEach(function(img) {
+            if (imgInViewport(img) && !img.src) {
+                loadImage(img)
+            }
+        })
+    })
 
 })
