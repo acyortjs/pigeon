@@ -106,6 +106,8 @@ a {
     margin-top: 70px;
 }
 .content img {
+    padding: 30px 0 70px;
+    background: #fff;
     display: block;
     max-width: 100%;
     height: auto;
