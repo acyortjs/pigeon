@@ -18,7 +18,8 @@
     <img class="thumb" width="{{ post.thumb.width }}" height="{{ post.thumb.height }}" data-src="{{ post.thumb.src }}" />
     </a>
 
-    {% if (loop.index % 3 === 0 && loop.index != index.posts.length) %}</div><div class="posts">{% endif %}
+    {% if (loop.index % 4 === 0 && loop.index != index.posts.length) %}</div><div class="posts">{% endif %}
+
     {% if loop.last %}</div>{% endif %}
 
     {% endfor %}

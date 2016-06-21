@@ -208,7 +208,7 @@ function _random(n, m) {
 }
 
 var padding = 30;
-var space = 160;
+var space = 30;
 
 document.addEventListener("DOMContentLoaded", function() {
 
@@ -227,29 +227,51 @@ document.addEventListener("DOMContentLoaded", function() {
     a.innerHTML = text;
 
     // random grid
-    var W = document.querySelectorAll('.wrap')[0].offsetWidth;
-
     Array.prototype.slice.call(document.querySelectorAll('.posts')).forEach(function(posts) {
-        position(posts, W)
+        position(posts)
     })
 
-    function position(dom, w) {
+    function position(dom) {
 
         var as = Array.prototype.slice.call(dom.querySelectorAll('a'));
 
-        var H = Math.max.apply(Math, as.map(function(a) {
+        var H = 2 * (Math.max.apply(Math, as.map(function(a) {
             return a.offsetHeight
-        })) + space - padding * 2;
+        })) + padding * 2 + space * 2);
 
-        // set outer height
+        var W = 2 * (Math.max.apply(Math, as.map(function(a) {
+            return a.offsetWidth
+        })) + padding * 2 + space * 2);
+
         dom.style.height = H +'px';
+        dom.style.width = W +'px';
 
-        as.forEach(function(a) {
+        as.forEach(function(a, i) {
             var h = a.offsetHeight;
             var w = a.offsetWidth;
 
-            var t = _random(-h / 8, H - h / 8 * 7);
-            var l = _random(-w / 8, W / 3 - w / 8 * 7);
+            var t = 0;
+            var l = 0;
+
+            if (i == 0) {
+                t = _random(0, H / 2 - h / 4 * 3);
+                l = _random(0, W / 2 - w / 4 * 3);
+            }
+
+            if (i == 1) {
+                t = _random(0, H / 2 - h / 4 * 3);
+                l = _random(-(w / 4), W / 2 - w);
+            }
+
+            if (i == 2) {
+                t = _random(-(h / 4), H / 2 - h);
+                l = _random(0, W / 2 - w / 4 * 3);
+            }
+
+            if (i == 3) {
+                t = _random(-(h / 4), H / 2 - h);
+                l = _random(-(w / 4), W / 2 - w);
+            }
 
             a.style.marginTop = t +'px';
             a.style.marginLeft = l +'px';
@@ -263,7 +285,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // show images
-
     function loadImage(el) {
         var image = new Image();
         image.onload = function() {
