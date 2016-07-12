@@ -103,10 +103,10 @@ a {
     margin: 0;
 }
 .info span {
-    color: #575558;
+    font-family: sans-serif;
+    color: #9a9a9a;
     margin: 0 5px;
-    font-size: 15px;
-    letter-spacing: -.5px;
+    font-size: 14px;
 }
 .content {
     text-align: center;
