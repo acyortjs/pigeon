@@ -2,15 +2,16 @@
 <html class="{% if post.title %}single{% endif %}">
 
 <head>
-  {% include 'partials/head.html' %}
-  <title>{% block title %}{% endblock %}</title>
+    {% include 'partials/head.html' %}
+    {% include 'partials/css.html' %}
+    <title>{% block title %}{% endblock %}</title>
+    {% block script %}{% endblock %}
 </head>
 
 <body>
 
 {% include 'partials/header.html' %}
 {% block content %}{% endblock %}
-{% block script %}{% endblock %}
 
 </body>
 </html>
