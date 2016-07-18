@@ -3,7 +3,7 @@
 {% import 'partials/body.html' as body %}
 
 {% block title %}
-{{ data.config.title }}
+{{ category.heading }} - {{ data.config.title }}
 {% endblock %}
 
 {% block script %}
@@ -11,6 +11,6 @@
 {% endblock %}
 
 {% block content %}
-{{ body.render(index, helper) }}
-{{ pagination.render(index) }}
+{{ body.render(category, helper) }}
+{{ pagination.render(category) }}
 {% endblock %}
