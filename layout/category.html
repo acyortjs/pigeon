@@ -14,3 +14,7 @@
 {{ body.render(category, helper) }}
 {{ pagination.render(category) }}
 {% endblock %}
+
+{% block script %}
+<script src="{{ data.config.root }}/js/script.js"></script>
+{% endblock %}

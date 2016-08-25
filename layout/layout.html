@@ -3,15 +3,15 @@
 
 <head>
     {% include 'partials/head.html' %}
-    {% include 'partials/css.html' %}
     <title>{% block title %}{% endblock %}</title>
-    {% block script %}{% endblock %}
 </head>
 
 <body>
 
 {% include 'partials/header.html' %}
 {% block content %}{% endblock %}
+
+{% block script %}{% endblock %}
 
 </body>
 </html>

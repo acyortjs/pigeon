@@ -1,4 +1,3 @@
-<script>
 var colors = {
     "Mercury": "#ff2b2b", 
     "TypeScript": "#2b7489", 
@@ -316,4 +315,3 @@ document.addEventListener("DOMContentLoaded", function() {
     })
 
 })
-</script>
