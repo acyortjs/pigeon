@@ -24,7 +24,7 @@ export default {
   flex: 1;
 
   & p {
-    color: #333;
+    color: #444;
   }
 }
 

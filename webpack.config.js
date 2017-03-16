@@ -1,4 +1,5 @@
 const webpack = require('webpack')
+const WebpackMd5Hash = require('webpack-md5-hash')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const isProd = process.env.NODE_ENV === 'production'
@@ -57,6 +58,7 @@ if (isProd) {
     chunkFilename: '[name].[chunkhash:8].js'
   }
   config.plugins = [
+    new WebpackMd5Hash(),
     new webpack.DefinePlugin({ 'process.env.NODE_ENV': '"production"' }),
     new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }),
     new webpack.optimize.CommonsChunkPlugin({
@@ -72,7 +74,7 @@ if (isProd) {
         collapseWhitespace: true
       }
     }),
-    new ExtractTextPlugin('[name].[chunkhash:8].css')
+    new ExtractTextPlugin('[name].[contenthash:8].css')
   ]
   config.module.rules[0].options = {
     loaders: {
