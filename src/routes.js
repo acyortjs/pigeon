@@ -1,19 +1,19 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Posts from './pages/posts'
-import Post from './pages/post'
+import posts from './pages/posts'
+import post from './pages/post'
 
 const routes = [
   {
     path: '/',
-    name: 'posts',
-    component: Posts
+    component: posts
   },
+  /*
   {
     path: '/post/:id',
-    name: 'post',
-    component: Post
+    component: post
   }
+  */
 ]
 
 Vue.use(VueRouter)

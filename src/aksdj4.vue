@@ -1,5 +1,7 @@
 <template>
 
+<Aheader></Aheader>
+
 <transition name="slide-fade" mode="out-in">
   <router-view class="view"></router-view>
 </transition>
@@ -8,8 +10,14 @@
 
 <script>
 
+import Aheader from './components/header'
+
 export default {
-  name: 'aksdj4'
+  name: 'aksdj4',
+
+  components: {
+    Aheader
+  }
 }
 
 </script>
