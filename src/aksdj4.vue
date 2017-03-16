@@ -1,10 +1,11 @@
 <template>
 
-<Aheader></Aheader>
-
-<transition name="slide-fade" mode="out-in">
-  <router-view class="view"></router-view>
-</transition>
+<div class="main">
+  <Aheader></Aheader>
+  <transition name="slide-fade" mode="out-in">
+    <router-view class="view"></router-view>
+  </transition>
+</div>
 
 </template>
 

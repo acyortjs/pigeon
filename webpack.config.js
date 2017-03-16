@@ -12,7 +12,7 @@ const config = {
   output: {
     path: '/',
     filename: '[name].js'
-  }.
+  },
 
   resolve: {
     extensions: ['.js', '.vue', '.svg']
@@ -26,22 +26,12 @@ const config = {
     rules: [
       {
         test: /\.vue$/,
-        loader: 'vue-loader',
-        options: {
-          postcss: [
-            require('postcss-import')(),
-            require('postcss-cssnext')()
-          ]
-        }
+        loader: 'vue-loader'
       },
       {
         test: /\.js$/,
-        exclude: /node_modules/
-        loader: 'babel-loader',
-        options: {
-          presets: ['es2015'],
-          plugins: ['transform-object-rest-spread']
-        }
+        exclude: /node_modules/,
+        loader: 'babel-loader'
       },
       {
         test: /\.svg$/,
@@ -53,7 +43,8 @@ const config = {
   devServer: {
     historyApiFallback: true,
     noInfo: true,
-    host: '0.0.0.0'
+    host: '0.0.0.0',
+    port: 1234
   },
 
   devtool: '#eval-source-map' 

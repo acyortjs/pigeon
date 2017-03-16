@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import posts from './pages/posts'
-import post from './pages/post'
+//import post from './pages/post'
 
 const routes = [
   {
