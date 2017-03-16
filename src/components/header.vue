@@ -9,14 +9,23 @@
 <script>
   
 export default {
-  name: 'header'
+  name: 'header',
+
+  data() {
+    return {}
+  }
 }
 
 </script>
 
-<style lang='postcss'>
+<style lang="postcss">
   
 .header {
+  flex: 1;
+
+  & p {
+    color: #333;
+  }
 }
 
 </style>

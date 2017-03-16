@@ -23,7 +23,7 @@ export default {
 
 </script>
 
-<style lang='postcss'>
+<style lang="postcss">
 
 @import "../node_modules/normalize.css/normalize.css";
 

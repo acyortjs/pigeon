@@ -1,4 +1,3 @@
-const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
@@ -75,11 +74,21 @@ if (isProd) {
     }),
     new ExtractTextPlugin('[name].[chunkhash:8].css')
   ]
-  config.module.rules[0].options.loaders = {
-    postcss: ExtractTextPlugin.extract({
-      use: 'postcss-loader',
-      fallback: 'vue-style-loader'
-    })
+  config.module.rules[0].options = {
+    loaders: {
+      postcss: ExtractTextPlugin.extract({
+        use: [
+          {
+            loader: 'css-loader',
+            options: {
+              minimize: true
+            }
+          },
+          'postcss-loader'
+        ],
+        fallback: 'vue-style-loader'
+      })
+    }
   }
   config.devtool = false
 }
