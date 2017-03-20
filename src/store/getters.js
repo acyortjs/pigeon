@@ -1,11 +1,11 @@
 export default {
-  getPosts(state) {
+  posts(state) {
     return state.posts
   },
-  getPost(state) {
+  post(state) {
     return state.post
   },
-  getConfig(state) {
+  config(state) {
     return state.config
   }
 }
