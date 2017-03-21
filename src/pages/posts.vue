@@ -33,11 +33,8 @@ export default {
 
   created() {
     if (!this.posts.length) {
-      this.getData(`page/${this.current}`, 'config')
-      .then((res) => {
-        this.setPosts(res[0])
-        this.setConfig(res[1])
-      })
+      this.getData(`page/${this.current}`)
+      .then(res => this.setPosts(res))
     }
   },
 
@@ -54,7 +51,7 @@ export default {
 
     items() {
       const { posts, current, config: { per_page } } = this
-      if (!per_page) {
+      if (!per_page || !posts.length) {
         return []
       }
       return clone(posts).splice((current - 1) * per_page, per_page)
@@ -68,7 +65,7 @@ export default {
   },
 
   methods: {
-    ...mapActions(['setPosts', 'setConfig', 'setCurrent']),
+    ...mapActions(['setPosts', 'setCurrent']),
 
     getData(...urls) {
       const args = urls.map(url => ({ url }))
