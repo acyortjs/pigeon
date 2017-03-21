@@ -3,9 +3,12 @@ export default {
     return state.posts
   },
   post(state) {
-    return state.post
+     return state.post
   },
   config(state) {
     return state.config
+  },
+  current(state) {
+    return state.current
   }
 }

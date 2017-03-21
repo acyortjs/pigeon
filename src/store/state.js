@@ -1,4 +1,5 @@
 export default {
+  current: 1,
   posts: [],
   post: {},
   config: {},

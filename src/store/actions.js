@@ -7,5 +7,8 @@ export default {
   },
   setConfig({ commit }, config) {
     commit('CONFIG', config)
+  },
+  setCurrent({ commit }, current) {
+    commit('CURRENT', current)
   }
 }

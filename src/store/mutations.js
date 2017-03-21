@@ -7,5 +7,8 @@ export default {
   },
   CONFIG(state, config) {
     state.config = config
+  },
+  CURRENT(state, current) {
+    state.current = current
   }
 }

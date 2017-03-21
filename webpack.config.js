@@ -10,6 +10,7 @@ const config = {
   },
 
   output: {
+    publicPath: '/',
     path: '/',
     filename: '[name].js'
   },

@@ -1,17 +1,17 @@
 <template>
 
-<div class="posts">
-  <ol>
-    <li v-for="post in items">
+<div>
+  <div class="posts">
+    <router-link :key="post.id" :to="`/posts/${post.id}`" v-for="post in items">
       <h2>{{ post.title }}</h2>
       <p>{{ post.updated }}</p>
-    </li>
-  </ol>
+    </router-link>
+  </div>
 
   <div class="nav">
-    <button @click="current -= 1" :disabled="current <= 1 || disabled">上一页</button>
+    <button @click="setCurrent(current - 1)" :disabled="current <= 1 || disabled">上一页</button>
     <span>{{ current }} / {{ total }}</span>
-    <button @click="current += 1" :disabled="current >= total || disabled">下一页</button>
+    <button @click="setCurrent(current + 1)" :disabled="current >= total || disabled">下一页</button>
   </div>
 </div>
 
@@ -27,21 +27,22 @@ export default {
 
   data() {
     return {
-      current: 1,
       disabled: false
     }
   },
 
   created() {
-    this.getData(`page/${this.current}`, 'config')
+    if (!this.posts.length) {
+      this.getData(`page/${this.current}`, 'config')
       .then((res) => {
         this.setPosts(res[0])
         this.setConfig(res[1])
       })
+    }
   },
 
   computed: {
-    ...mapGetters(['posts', 'config']),
+    ...mapGetters(['posts', 'config', 'current']),
 
     total() {
       const { config: { posts, per_page } } = this
@@ -67,13 +68,13 @@ export default {
   },
 
   methods: {
-    ...mapActions(['setPosts', 'setConfig']),
+    ...mapActions(['setPosts', 'setConfig', 'setCurrent']),
 
     getData(...urls) {
       const args = urls.map(url => ({ url }))
       return this.$load(...args)
-        .then(res => res)
-        .catch(err => console.log(err))
+      .then(res => res)
+      .catch(err => console.log(err))
     },
 
     getPosts() {
@@ -82,10 +83,10 @@ export default {
       if (posts.length <= (current - 1) * per_page) {
         this.disabled = true
         this.getData(`page/${this.current}`)
-          .then((res) => {
-            this.disabled = false
-            this.setPosts(clone(posts).concat(res))
-          })
+        .then((res) => {
+          this.disabled = false
+          this.setPosts(posts.concat(res))
+        })
       }
     }
   }
