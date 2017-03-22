@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 import Posts from './pages/posts'
 import Post from './pages/post'
 import Archives from './pages/archives'
+import Categories from './pages/categories'
+import Tags from './pages/tags'
 
 const routes = [
   {
@@ -16,6 +18,14 @@ const routes = [
   {
     path: '/archives',
     component: Archives
+  },
+  {
+    path: '/categories',
+    component: Categories
+  },
+  {
+    path: '/tags',
+    component: Tags
   },
   {
     path: '*',

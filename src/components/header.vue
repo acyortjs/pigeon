@@ -11,24 +11,6 @@
     {{ key }}
     </router-link>
   </div>
-  <div class="tags" v-if="config.tags">
-    <router-link 
-      :key="tag.id" 
-      :to="`/tag/${tag.id}`" 
-      v-for="tag in config.tags"
-    >
-      {{ tag.name }} ({{ tag.count }})
-    </router-link>
-  </div>
-  <div class="categories" v-if="config.categories">
-    <router-link 
-      :key="category.id" 
-      :to="`/category/${category.id}`" 
-      v-for="category in config.categories"
-    >
-      {{ category.name }} ({{ category.count }})
-    </router-link>
-  </div>
 </div>
 
 </template>
