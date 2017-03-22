@@ -1,16 +1,21 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import posts from './pages/posts'
-import post from './pages/post'
+import Posts from './pages/posts'
+import Post from './pages/post'
+import Archives from './pages/archives'
 
 const routes = [
   {
     path: '/',
-    component: posts
+    component: Posts
   },
   {
     path: '/posts/:id',
-    component: post
+    component: Post
+  },
+  {
+    path: '/archives',
+    component: Archives
   },
   {
     path: '*',

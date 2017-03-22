@@ -1,9 +1,15 @@
 <template>
   
 <div class="header">
-  <a href="/">{{ config.title }}</a>
+  <router-link :to="'/'">{{ config.title }}</router-link>
   <div v-if="config.menu" class="menu">
-    <a v-for="(value, key) in config.menu" :href="value">{{ key }}</a>
+    <router-link
+      v-for="(value, key) in config.menu"
+      :key="value"
+      :to="value"
+    >
+    {{ key }}
+    </router-link>
   </div>
   <div class="tags" v-if="config.tags">
     <router-link 

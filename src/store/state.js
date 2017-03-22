@@ -1,6 +1,8 @@
 export default {
   current: 1,
+  archive_current: 1,
   posts: [],
+  archives: [],
   post: {},
   config: {},
   colors: {

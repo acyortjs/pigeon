@@ -2,6 +2,9 @@ export default {
   setPosts({ commit }, posts) {
     commit('POSTS', posts)
   },
+  setArchives({ commit }, archives) {
+    commit('ARCHIVES', archives)
+  },
   setPost({ commit }, post) {
     commit('POST', post)
   },
@@ -10,5 +13,8 @@ export default {
   },
   setCurrent({ commit }, current) {
     commit('CURRENT', current)
+  },
+  setArchiveCurrent({ commit }, archive_current) {
+    commit('ARCHIVECURRENT', archive_current)
   }
 }

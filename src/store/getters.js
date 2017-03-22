@@ -2,6 +2,9 @@ export default {
   posts(state) {
     return state.posts
   },
+  archives(state) {
+    return state.archives
+  },
   post(state) {
      return state.post
   },
@@ -10,5 +13,8 @@ export default {
   },
   current(state) {
     return state.current
+  },
+  archive_current(state) {
+    return state.archive_current
   }
 }
