@@ -102,24 +102,24 @@ export default {
         },
         config: { per_page },
         tags,
-        tag_current,
-        setTags,
-        loadPosts
+        tag_current
       } = this
 
       const _tags = clone(tags)
 
       if (!tags[id]) {
-        return loadPosts().then((res) => {
+        return this.loadPosts()
+        .then((res) => {
           _tags[id] = res
-          setTags(_tags)
+          this.setTags(_tags)
         })
       }
 
       if (tags[id].posts.length <= (tag_current - 1) * per_page) {
-        loadPosts().then((res) => {
+        this.loadPosts()
+        .then((res) => {
           _tags[id].posts = _tags[id].posts.concat(res.posts)
-          setTags(_tags)
+          this.setTags(_tags)
         })
       }
     },
@@ -129,12 +129,12 @@ export default {
         $route: {
           params: { id }
         },
-        tag_current,
-        $load
+        tag_current
       } = this
 
       this.disabled = true
-      return $load(`tags/${id}/${tag_current}`).then((res) => {
+      return this.$load(`tags/${id}/${tag_current}`)
+      .then((res) => {
         this.disabled = false
         return res
       })

@@ -33,14 +33,16 @@ export default {
 
   created() {
     const {
-      $load,
       current,
-      posts,
-      setPosts
+      posts
     } = this
 
     if (!posts.length) {
-      $load(`page/${current}`).then(res => setPosts(res))
+      this.$load(`page/${current}`)
+      .then(res => {
+        console.log(res)
+        this.setPosts(res)
+      })
     }
   },
 
@@ -84,16 +86,15 @@ export default {
       const {
         config: { per_page },
         posts,
-        current,
-        $load,
-        setPosts
+        current
       } = this
 
       if (posts.length <= (current - 1) * per_page) {
         this.disabled = true
-        $load(`page/${current}`).then((res) => {
+        this.$load(`page/${current}`)
+        .then((res) => {
           this.disabled = false
-          setPosts(posts.concat(res))
+          this.setPosts(posts.concat(res))
         })
       }
     },

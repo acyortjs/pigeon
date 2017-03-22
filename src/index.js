@@ -7,7 +7,9 @@ import api from './api'
 
 Vue.config.devtools = process.env.NODE_ENV !== 'production'
 
-Vue.prototype.$load = function load(...urls) {
+//Vue.prototype.$load = function(...urls) {
+Vue.prototype.$load = function(url) {
+  /*
   const args = urls.map(url => axios({ method: 'get', url: api(url) }))
 
   return axios.all(args)
@@ -19,7 +21,14 @@ Vue.prototype.$load = function load(...urls) {
       return res.map(r => r.data)
     })
   )
-  .catch(err => console.log(err))
+  .catch(err => this.$store.dispatch('setMessage', { type: 'error', text: 'error' }))
+  */
+  return axios.get(url)
+  .then(res => res.data)
+  .catch(err => {
+    this.$store.dispatch('setMessage', { type: 'error', text: 'error' })
+    return '?????'
+  })
 }
 
 new Vue({

@@ -28,5 +28,13 @@ export default {
   },
   setTagCurrent({ commit }, tag_current) {
     commit('TAGCURRENT', tag_current)
+  },
+  setMessage({ commit }, { type, text, time }) {
+    commit('MESSAGE', { type, text })
+    if (time) {
+      setTimeout(() => {
+        commit('MESSAGE', { type: 'info', text: '' })
+      }, time)
+    }
   }
 }

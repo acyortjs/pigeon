@@ -7,9 +7,7 @@
       v-for="(value, key) in config.menu"
       :key="value"
       :to="value"
-    >
-    {{ key }}
-    </router-link>
+    >{{ key }}</router-link>
   </div>
 </div>
 
@@ -27,20 +25,23 @@ export default {
   },
 
   created() {
-    const {
-      config: { title },
-      setConfig,
-      $load
-    } = this
+    const { title } = this.config
 
     if (title) {
       return document.title = title
     }
 
-    $load('config').then((res) => {
-      setConfig(res)
+    return;
+
+    this.$load('config')
+    .then((res) => {
+      console.log(res)
+      /*
+      this.setConfig(res)
       document.title = res.title
+      */
     })
+    .catch(err => console.log(err))
   },
 
   methods: {

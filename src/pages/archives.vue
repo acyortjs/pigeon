@@ -33,13 +33,12 @@ export default {
   created() {
     const {
       archive_current,
-      archives,
-      $load,
-      setArchives
+      archives
     } = this
 
     if (!archives.length) {
-      $load(`archives/${archive_current}`).then(res => setArchives(res))
+      this.$load(`archives/${archive_current}`)
+      .then(res => this.setArchives(res))
     }
   },
 
@@ -83,16 +82,15 @@ export default {
       const {
         config: { archives_per_page },
         archives,
-        archive_current,
-        setArchives,
-        $load
+        archive_current
       } = this
 
       if (archives.length <= (archive_current - 1) * archives_per_page) {
         this.disabled = true
-        $load(`archives/${archive_current}`).then((res) => {
+        this.$load(`archives/${archive_current}`)
+        .then((res) => {
           this.disabled = false
-          setArchives(archives.concat(res))
+          this.setArchives(archives.concat(res))
         })
       }
     },

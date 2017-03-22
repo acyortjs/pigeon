@@ -28,5 +28,8 @@ export default {
   },
   tag_current(state) {
     return state.tag_current
+  },
+  message(state) {
+    return state.message
   }
 }

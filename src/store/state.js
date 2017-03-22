@@ -9,6 +9,10 @@ export default {
   tags: {},
   post: {},
   config: {},
+  message: {
+    type: 'info',
+    text: ''
+  },
   colors: {
     "Mercury": "#ff2b2b",
     "TypeScript": "#2b7489",

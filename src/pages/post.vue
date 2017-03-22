@@ -52,19 +52,16 @@ export default {
         $route: {
           params: { id }
         },
-        setPost,
-        $store: {
-          state: { post }
-        },
-        $load
+        post
       } = this
 
       const _post = clone(post)
 
       if (!post[id]) {
-        $load(`posts/${id}`).then((res) => {
+        this.$load(`posts/${id}`)
+        .then((res) => {
           _post[id] = res
-          setPost(_post)
+          this.setPost(_post)
         })
       }
     },

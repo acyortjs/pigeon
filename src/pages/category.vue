@@ -102,24 +102,24 @@ export default {
         },
         config: { per_page },
         categories,
-        category_current,
-        setCategories,
-        loadPosts
+        category_current
       } = this
 
       const _categories = clone(categories)
 
       if (!categories[id]) {
-        return loadPosts().then((res) => {
+        return this.loadPosts()
+        .then((res) => {
           _categories[id] = res
-          setCategories(_categories)
+          this.setCategories(_categories)
         })
       }
 
       if (categories[id].posts.length <= (category_current - 1) * per_page) {
-        loadPosts().then((res) => {
+        this.loadPosts()
+        .then((res) => {
           _categories[id].posts = _categories[id].posts.concat(res.posts)
-          setCategories(_categories)
+          this.setCategories(_categories)
         })
       }
     },
@@ -129,12 +129,12 @@ export default {
         $route: {
           params: { id }
         },
-        category_current,
-        $load
+        category_current
       } = this
 
       this.disabled = true
-      return $load(`categories/${id}/${category_current}`).then((res) => {
+      return this.$load(`categories/${id}/${category_current}`)
+      .then((res) => {
         this.disabled = false
         return res
       })
