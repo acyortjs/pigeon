@@ -61,9 +61,7 @@ export default {
     items() {
       const {
         archives,
-        config: {
-          archives_per_page
-        },
+        config: { archives_per_page },
         archive_current
       } = this
 
@@ -83,9 +81,7 @@ export default {
   methods: {
     getArchives() {
       const {
-        config: {
-          archives_per_page
-        },
+        config: { archives_per_page },
         archives,
         archive_current,
         setArchives,

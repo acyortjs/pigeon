@@ -5,6 +5,9 @@ export default {
   archives(state) {
     return state.archives
   },
+  categories(state) {
+    return state.categories
+  },
   post(state) {
      return state.post
   },
@@ -16,5 +19,8 @@ export default {
   },
   archive_current(state) {
     return state.archive_current
+  },
+  category_current(state) {
+    return state.category_current
   }
 }

@@ -5,6 +5,9 @@ export default {
   setArchives({ commit }, archives) {
     commit('ARCHIVES', archives)
   },
+  setCategories({ commit }, categories) {
+    commit('CATEGORIES', categories)
+  },
   setPost({ commit }, post) {
     commit('POST', post)
   },
@@ -16,5 +19,8 @@ export default {
   },
   setArchiveCurrent({ commit }, archive_current) {
     commit('ARCHIVECURRENT', archive_current)
+  },
+  setCategoryCurrent({ commit }, category_current) {
+    commit('CATEGORYCURRENT', category_current)
   }
 }
