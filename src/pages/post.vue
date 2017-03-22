@@ -16,17 +16,23 @@
 <script>
 
 import { mapActions, mapGetters } from 'vuex'
+import { clone } from '../utils'
 
 export default {
   name: 'post',
 
-  data() {
-    return {
-      page: {}
-    }
-  },
-
   computed: {
+    page() {
+      const {
+        post,
+        $route: {
+          params: { id }
+        }
+      } = this
+
+      return post[id] || {}
+    },
+
     ...mapGetters(['post'])
   },
 
@@ -53,15 +59,14 @@ export default {
         $load
       } = this
 
-      if (post[id]) {
-        return this.page = post[id]
-      }
+      const _post = clone(post)
 
-      $load(`posts/${id}`).then((res) => {
-        this.page = res
-        post[res.id] = res
-        setPost(post)
-      })
+      if (!post[id]) {
+        $load(`posts/${id}`).then((res) => {
+          _post[id] = res
+          setPost(_post)
+        })
+      }
     },
 
     ...mapActions(['setPost'])
