@@ -1,8 +1,8 @@
 <template>
 
 <div>
-  <div class="category">
-    <h2>{{ category.name }}</h2>
+  <div class="tag">
+    <h2>{{ tag.name }}</h2>
     <router-link :key="post.id" :to="`/posts/${post.id}`" v-for="post in posts">
       <p>{{ post.title }}</p>
     </router-link>
@@ -10,13 +10,13 @@
 
   <div class="nav">
     <button
-      @click="setCategoryCurrent(category_current - 1)"
-      :disabled="category_current <= 1 || disabled"
+      @click="setTagCurrent(tag_current - 1)"
+      :disabled="tag_current <= 1 || disabled"
     >上一页</button>
-    <span>{{ category_current }} / {{ total }}</span>
+    <span>{{ tag_current }} / {{ total }}</span>
     <button
-      @click="setCategoryCurrent(category_current + 1)"
-      :disabled="category_current >= total || disabled"
+      @click="setTagCurrent(tag_current + 1)"
+      :disabled="tag_current >= total || disabled"
     >下一页</button>
   </div>
 </div>
@@ -29,7 +29,7 @@ import { mapActions, mapGetters } from 'vuex'
 import { clone } from '../utils'
 
 export default {
-  name: 'category',
+  name: 'tag',
 
   data() {
     return {
@@ -42,40 +42,40 @@ export default {
   },
 
   watch: {
-    category_current() {
+    tag_current() {
       this.getPosts()
     }
   },
 
   computed: {
-    category() {
+    tag() {
       const {
         $route: {
           params: { id }
         },
-        categories
+        tags
       } = this
 
-      return categories[id] || {}
+      return tags[id] || {}
     },
 
     posts() {
       const {
-        category,
-        category_current,
+        tag,
+        tag_current,
         config: { per_page }
       } = this
 
-      if (!category.posts) {
+      if (!tag.posts) {
         return []
       }
-      return clone(category.posts).splice((category_current - 1) * per_page, per_page)
+      return clone(tag.posts).splice((tag_current - 1) * per_page, per_page)
     },
 
     total() {
       const {
         config: {
-          categories,
+          tags,
           per_page,
         },
         $route: {
@@ -83,15 +83,15 @@ export default {
         }
       } = this
 
-      if (!categories) {
+      if (!tags) {
         return 1
       }
 
-      const { count } = categories.filter(category => category.id == id)[0]
+      const { count } = tags.filter(tag => tag.id == id)[0]
       return Math.ceil(count / per_page)
     },
 
-    ...mapGetters(['config', 'category_current', 'categories'])
+    ...mapGetters(['config', 'tag_current', 'tags'])
   },
 
   methods: {
@@ -101,25 +101,25 @@ export default {
           params: { id }
         },
         config: { per_page },
-        categories,
-        category_current,
-        setCategories,
+        tags,
+        tag_current,
+        setTags,
         loadPosts
       } = this
 
-      const _categories = clone(categories)
+      const _tags = clone(tags)
 
-      if (!categories[id]) {
+      if (!tags[id]) {
         return loadPosts().then((res) => {
-          _categories[id] = res
-          setCategories(_categories)
+          _tags[id] = res
+          setTags(_tags)
         })
       }
 
-      if (categories[id].posts.length <= (category_current - 1) * per_page) {
+      if (tags[id].posts.length <= (tag_current - 1) * per_page) {
         loadPosts().then((res) => {
-          _categories[id].posts = _categories[id].posts.concat(res.posts)
-          setCategories(_categories)
+          _tags[id].posts = _tags[id].posts.concat(res.posts)
+          setTags(_tags)
         })
       }
     },
@@ -129,18 +129,18 @@ export default {
         $route: {
           params: { id }
         },
-        category_current,
+        tag_current,
         $load
       } = this
 
       this.disabled = true
-      return $load(`categories/${id}/${category_current}`).then((res) => {
+      return $load(`tags/${id}/${tag_current}`).then((res) => {
         this.disabled = false
         return res
       })
     },
 
-    ...mapActions(['setCategories', 'setCategoryCurrent'])
+    ...mapActions(['setTags', 'setTagCurrent'])
   }
 }
 
@@ -148,7 +148,7 @@ export default {
 
 <style lang="postcss">
 
-.category {
+.tag {
 }
 
 </style>

@@ -16,13 +16,21 @@
 
 <script>
 
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'tags',
 
   computed: {
     ...mapGetters(['config'])
+  },
+
+  created() {
+    this.setTagCurrent(1)
+  },
+
+  methods: {
+    ...mapActions(['setTagCurrent'])
   }
 }
 

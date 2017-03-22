@@ -16,13 +16,21 @@
 
 <script>
 
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'categories',
 
   computed: {
     ...mapGetters(['config'])
+  },
+
+  created() {
+    this.setCategoryCurrent(1)
+  },
+
+  methods: {
+    ...mapActions(['setCategoryCurrent'])
   }
 }
 

@@ -8,6 +8,9 @@ export default {
   categories(state) {
     return state.categories
   },
+  tags(state) {
+    return state.tags
+  },
   post(state) {
      return state.post
   },
@@ -22,5 +25,8 @@ export default {
   },
   category_current(state) {
     return state.category_current
+  },
+  tag_current(state) {
+    return state.tag_current
   }
 }

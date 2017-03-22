@@ -6,6 +6,7 @@ import Archives from './pages/archives'
 import Categories from './pages/categories'
 import Tags from './pages/tags'
 import Category from './pages/category'
+import Tag from './pages/tag'
 
 const routes = [
   {
@@ -31,6 +32,10 @@ const routes = [
   {
     path: '/categories/:id',
     component: Category
+  },
+  {
+    path: '/tags/:id',
+    component: Tag
   },
   {
     path: '*',

@@ -8,6 +8,9 @@ export default {
   setCategories({ commit }, categories) {
     commit('CATEGORIES', categories)
   },
+  setTags({ commit }, tags) {
+    commit('TAGS', tags)
+  },
   setPost({ commit }, post) {
     commit('POST', post)
   },
@@ -22,5 +25,8 @@ export default {
   },
   setCategoryCurrent({ commit }, category_current) {
     commit('CATEGORYCURRENT', category_current)
+  },
+  setTagCurrent({ commit }, tag_current) {
+    commit('TAGCURRENT', tag_current)
   }
 }
