@@ -17,7 +17,7 @@
 </template>
 
 <script>
-  
+
 import { mapActions, mapGetters } from 'vuex'
 import { clone } from '../utils'
 
@@ -31,11 +31,15 @@ export default {
   },
 
   created() {
-    const { archive_current, archives, $load, setArchives } = this
+    const {
+      archive_current,
+      archives,
+      $load,
+      setArchives
+    } = this
+
     if (!archives.length) {
-      $load({ url: `archives/${archive_current}` })
-      .then(res => setArchives(res))
-      .catch(err => console.log(err))
+      $load(`archives/${archive_current}`).then(res => setArchives(res))
     }
   },
 
@@ -43,7 +47,11 @@ export default {
     ...mapGetters(['config', 'archives', 'archive_current']),
 
     total() {
-      const { config: { posts, archives_per_page } } = this
+      const {
+        posts,
+        archives_per_page
+      } = this.config
+
       if (posts && posts.length) {
         return Math.ceil(posts.length / archives_per_page)
       }
@@ -51,7 +59,14 @@ export default {
     },
 
     items() {
-      const { archives, archive_current, config: { archives_per_page } } = this
+      const {
+        archives,
+        config: {
+          archives_per_page
+        },
+        archive_current
+      } = this
+
       if (!archives_per_page || !archives.length) {
         return []
       }
@@ -66,28 +81,34 @@ export default {
   },
 
   methods: {
-    ...mapActions(['setArchives', 'setArchiveCurrent']),
-
     getArchives() {
-      const { config: { archives_per_page }, archives, archive_current } = this
+      const {
+        config: {
+          archives_per_page
+        },
+        archives,
+        archive_current,
+        setArchives,
+        $load
+      } = this
 
       if (archives.length <= (archive_current - 1) * archives_per_page) {
         this.disabled = true
-        this.$load({ url: `archives/${this.archive_current}` })
-        .then((res) => {
+        $load(`archives/${archive_current}`).then((res) => {
           this.disabled = false
-          this.setArchives(archives.concat(res))
+          setArchives(archives.concat(res))
         })
-        .catch(err => console.log(err))
       }
-    }
+    },
+
+    ...mapActions(['setArchives', 'setArchiveCurrent'])
   }
 }
 
 </script>
 
 <style lang="postcss">
-  
+
 .archives {
 }
 

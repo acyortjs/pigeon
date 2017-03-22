@@ -21,7 +21,7 @@
 
 import { mapActions, mapGetters } from 'vuex'
 import { clone } from '../utils'
-  
+
 export default {
   name: 'posts',
 
@@ -32,9 +32,15 @@ export default {
   },
 
   created() {
-    if (!this.posts.length) {
-      this.getData(`page/${this.current}`)
-      .then(res => this.setPosts(res))
+    const {
+      $load,
+      current,
+      posts,
+      setPosts
+    } = this
+
+    if (!posts.length) {
+      $load(`page/${current}`).then(res => setPosts(res))
     }
   },
 
@@ -42,7 +48,11 @@ export default {
     ...mapGetters(['posts', 'config', 'current']),
 
     total() {
-      const { config: { posts, per_page } } = this
+      const {
+        posts,
+        per_page
+      } = this.config
+
       if (posts && posts.length) {
         return Math.ceil(posts.length / per_page)
       }
@@ -50,7 +60,12 @@ export default {
     },
 
     items() {
-      const { posts, current, config: { per_page } } = this
+      const {
+        posts,
+        current,
+        config: { per_page }
+      } = this
+
       if (!per_page || !posts.length) {
         return []
       }
@@ -65,34 +80,32 @@ export default {
   },
 
   methods: {
-    ...mapActions(['setPosts', 'setCurrent']),
-
-    getData(...urls) {
-      const args = urls.map(url => ({ url }))
-      return this.$load(...args)
-      .then(res => res)
-      .catch(err => console.log(err))
-    },
-
     getPosts() {
-      const { config: { per_page }, posts, current } = this
+      const {
+        config: { per_page },
+        posts,
+        current,
+        $load,
+        setPosts
+      } = this
 
       if (posts.length <= (current - 1) * per_page) {
         this.disabled = true
-        this.getData(`page/${this.current}`)
-        .then((res) => {
+        $load(`page/${current}`).then((res) => {
           this.disabled = false
-          this.setPosts(posts.concat(res))
+          setPosts(posts.concat(res))
         })
       }
-    }
+    },
+
+    ...mapActions(['setPosts', 'setCurrent'])
   }
 }
 
 </script>
 
 <style lang="postcss">
-  
+
 .posts {
 }
 

@@ -1,10 +1,10 @@
 <template>
-  
+
 <div class="tags">
   <template v-if="config.tags">
-    <router-link 
-      :key="tag.id" 
-      :to="`/tags/${tag.id}`" 
+    <router-link
+      :key="tag.id"
+      :to="`/tags/${tag.id}`"
       v-for="tag in config.tags"
     >
       {{ tag.name }} ({{ tag.count }})
@@ -15,7 +15,7 @@
 </template>
 
 <script>
-  
+
 import { mapGetters } from 'vuex'
 
 export default {
@@ -29,7 +29,7 @@ export default {
 </script>
 
 <style lang="postcss">
-  
+
 .tags {
 }
 

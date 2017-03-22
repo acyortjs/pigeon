@@ -1,10 +1,10 @@
 <template>
-  
+
 <div class="categories">
   <template v-if="config.categories">
-    <router-link 
-      :key="category.id" 
-      :to="`/categories/${category.id}`" 
+    <router-link
+      :key="category.id"
+      :to="`/categories/${category.id}`"
       v-for="category in config.categories"
     >
       {{ category.name }} ({{ category.count }})
@@ -15,7 +15,7 @@
 </template>
 
 <script>
-  
+
 import { mapGetters } from 'vuex'
 
 export default {
@@ -29,7 +29,7 @@ export default {
 </script>
 
 <style lang="postcss">
-  
+
 .categories {
 }
 

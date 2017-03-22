@@ -1,5 +1,5 @@
 <template>
-  
+
 <div class="header">
   <router-link :to="'/'">{{ config.title }}</router-link>
   <div v-if="config.menu" class="menu">
@@ -27,18 +27,20 @@ export default {
   },
 
   created() {
-    const { config: { title }, $load } = this
+    const {
+      config: { title },
+      setConfig,
+      $load
+    } = this
 
     if (title) {
       return document.title = title
     }
 
-    $load({ url: 'config' })
-    .then((res) => {
-      this.setConfig(res)
+    $load('config').then((res) => {
+      setConfig(res)
       document.title = res.title
     })
-    .catch(err => console.log(err))
   },
 
   methods: {
@@ -49,7 +51,7 @@ export default {
 </script>
 
 <style lang="postcss">
-  
+
 .header {
   flex: 1;
 

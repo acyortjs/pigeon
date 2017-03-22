@@ -1,5 +1,5 @@
 <template>
-  
+
 <div class="post">
   <div v-if="page.prev">
     <router-link :to="`/posts/${page.prev.id}`">{{ page.prev.title }}</router-link>
@@ -16,7 +16,7 @@
 <script>
 
 import { mapActions, mapGetters } from 'vuex'
-  
+
 export default {
   name: 'post',
 
@@ -41,30 +41,37 @@ export default {
   },
 
   methods: {
-    ...mapActions(['setPost']),
-
     getPost() {
-      const { $load, $route: { params: { id } }, setPost, $store: { state: { post } } } = this
+      const {
+        $route: {
+          params: { id }
+        },
+        setPost,
+        $store: {
+          state: { post }
+        },
+        $load
+      } = this
 
       if (post[id]) {
         return this.page = post[id]
       }
 
-      $load({ url: `posts/${id}` })
-      .then((res) => {
+      $load(`posts/${id}`).then((res) => {
         this.page = res
         post[res.id] = res
         setPost(post)
       })
-      .catch(err => console.log(err))
-    }
+    },
+
+    ...mapActions(['setPost'])
   }
 }
 
 </script>
 
 <style lang="postcss">
-  
+
 .post {
 }
 

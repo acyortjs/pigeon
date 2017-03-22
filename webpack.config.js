@@ -48,7 +48,7 @@ const config = {
     port: 1234
   },
 
-  devtool: '#eval-source-map' 
+  devtool: '#eval-source-map'
 }
 
 if (isProd) {
