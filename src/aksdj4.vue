@@ -26,6 +26,14 @@ export default {
 
   computed: {
     ...mapGetters(['config'])
+  },
+
+  watch: {
+    config() {
+      if (this.config.title) {
+        //document.documentElement.classList.remove('loading')
+      }
+    }
   }
 }
 
