@@ -27,6 +27,7 @@ export default {
 
   created() {
     this.setCategoryCurrent(1)
+    document.title = `All Categories - ${this.config.title}`
   },
 
   methods: {

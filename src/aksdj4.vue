@@ -2,7 +2,7 @@
 
 <div class="main">
   <Aheader></Aheader>
-  <transition name="slide-fade" mode="out-in">
+  <transition v-if="config.title" name="slide-fade" mode="out-in">
     <router-view class="view"></router-view>
   </transition>
   <Notice></Notice>
@@ -14,6 +14,7 @@
 
 import Aheader from './components/header'
 import Notice from './components/notice'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'aksdj4',
@@ -21,6 +22,10 @@ export default {
   components: {
     Aheader,
     Notice
+  },
+
+  computed: {
+    ...mapGetters(['config'])
   }
 }
 

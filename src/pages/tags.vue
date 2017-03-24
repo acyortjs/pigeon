@@ -27,6 +27,7 @@ export default {
 
   created() {
     this.setTagCurrent(1)
+    document.title = `All Tags - ${this.config.title}`
   },
 
   methods: {

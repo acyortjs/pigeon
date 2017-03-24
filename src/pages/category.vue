@@ -38,6 +38,18 @@ export default {
   },
 
   created() {
+    const {
+      config: {
+        title,
+        categories
+      },
+      $route: {
+        params: { id }
+      }
+    } = this
+    const { name } = categories.filter(category => category.id == id)[0]
+
+    document.title = `${name} - ${title}`
     this.getPosts()
   },
 

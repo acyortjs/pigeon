@@ -33,7 +33,7 @@ export default {
       return post[id] || {}
     },
 
-    ...mapGetters(['post'])
+    ...mapGetters(['post', 'config'])
   },
 
   watch: {
@@ -52,18 +52,22 @@ export default {
         $route: {
           params: { id }
         },
+        config: { title },
         post
       } = this
 
       const _post = clone(post)
 
-      if (!post[id]) {
-        this.$load(`posts/${id}`)
-        .then((res) => {
-          _post[id] = res
-          this.setPost(_post)
-        })
+      if (post[id]) {
+        return document.title = `${post[id].title} = ${title}`
       }
+
+      this.$load(`posts/${id}`)
+      .then((res) => {
+        _post[id] = res
+        this.setPost(_post)
+        document.title = `${res.title} - ${title}`
+      })
     },
 
     ...mapActions(['setPost'])

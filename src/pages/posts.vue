@@ -34,16 +34,18 @@ export default {
   created() {
     const {
       current,
-      posts
+      posts,
+      config: { title }
     } = this
 
     if (!posts.length) {
       this.$load(`page/${current}`)
       .then(res => {
-        console.log(res)
         this.setPosts(res)
       })
     }
+
+    document.title = title
   },
 
   computed: {

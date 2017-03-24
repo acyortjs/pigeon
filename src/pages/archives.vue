@@ -40,6 +40,8 @@ export default {
       this.$load(`archives/${archive_current}`)
       .then(res => this.setArchives(res))
     }
+
+    document.title = `Archives - ${this.config.title}`
   },
 
   computed: {

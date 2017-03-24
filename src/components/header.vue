@@ -25,23 +25,8 @@ export default {
   },
 
   created() {
-    const { title } = this.config
-
-    if (title) {
-      return document.title = title
-    }
-
-    return;
-
     this.$load('config')
-    .then((res) => {
-      console.log(res)
-      /*
-      this.setConfig(res)
-      document.title = res.title
-      */
-    })
-    .catch(err => console.log(err))
+    .then(res => this.setConfig(res))
   },
 
   methods: {
