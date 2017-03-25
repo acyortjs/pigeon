@@ -31,5 +31,8 @@ export default {
   },
   message(state) {
     return state.message
+  },
+  loading(state) {
+    return state.loading
   }
 }

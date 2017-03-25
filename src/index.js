@@ -10,9 +10,13 @@ Vue.config.devtools = process.env.NODE_ENV !== 'production'
 Vue.prototype.$load = function(...urls) {
   const args = urls.map(url => axios({ method: 'get', url: api(url) }))
 
+  this.$store.dispatch('setLoading', true)
+
   return axios.all(args)
   .then(
     axios.spread((...res) => {
+      this.$store.dispatch('setLoading', false)
+
       if (res.length == 1) {
         return res[0].data
       }
@@ -20,10 +24,7 @@ Vue.prototype.$load = function(...urls) {
     })
   )
   .catch((err) => {
-    this.$store.dispatch('setMessage', {
-      type: 'error',
-      text: 'Network Error'
-    })
+    this.$store.dispatch('setMessage', 'Network Error')
     return Promise.reject()
   })
 }

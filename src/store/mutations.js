@@ -29,7 +29,10 @@ export default {
   TAGCURRENT(state, tag_current) {
     state.tag_current = tag_current
   },
-  MESSAGE(state, { type, text }) {
-    state.message = { type, text }
+  MESSAGE(state, message) {
+    state.message = message
+  },
+  LOADING(state, mode) {
+    state.loading = mode
   }
 }

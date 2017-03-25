@@ -1,7 +1,7 @@
 <template>
 
-<div class="notice" :class="className">
-  <p>{{ message.text }}</p>
+<div class="notice" :class="message ? 'active' : ''">
+  <p>{{ message }}</p>
 </div>
 
 </template>
@@ -14,18 +14,6 @@ export default {
   name: 'notice',
 
   computed: {
-    className() {
-      const {
-        type,
-        text
-      } = this.message
-
-      if (!text) {
-        return type
-      }
-      return `${type} active`
-    },
-
     ...mapGetters(['message'])
   }
 }
@@ -35,6 +23,9 @@ export default {
 <style lang="postcss">
 
 .notice {
+  position: absolute;
+  width: 100%;
+  text-align: center;
 }
 
 </style>

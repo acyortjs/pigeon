@@ -9,6 +9,7 @@
       :to="value"
     >{{ key }}</router-link>
   </div>
+  <div class="spin" :class="loading ? 'active' : ''">{{ loading }}</div>
 </div>
 
 </template>
@@ -21,7 +22,7 @@ export default {
   name: 'header',
 
   computed: {
-    ...mapGetters(['config'])
+    ...mapGetters(['config', 'loading'])
   },
 
   created() {

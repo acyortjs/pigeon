@@ -31,7 +31,9 @@ export default {
   watch: {
     config() {
       if (this.config.title) {
-        //document.documentElement.classList.remove('loading')
+        setTimeout(() => {
+          document.documentElement.classList.remove('loading')
+        }, 1500)
       }
     }
   }
@@ -42,5 +44,9 @@ export default {
 <style lang="postcss">
 
 @import "../node_modules/normalize.css/normalize.css";
+
+.main {
+  position: relative;
+}
 
 </style>
