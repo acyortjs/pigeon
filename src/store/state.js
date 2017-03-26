@@ -1,5 +1,5 @@
 export default {
-  posts: [],
+  posts: {},
   archives: [],
   categories: {},
   tags: {},

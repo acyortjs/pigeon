@@ -35,22 +35,30 @@ export default {
     const {
       posts,
       page,
+      total,
       config: { title }
     } = this
 
-    if (!posts.length) {
-      this.$load(`page/${page}`)
-      .then(res => {
-        this.setPosts(res)
-      })
+    if (page > total) {
+      return this.$router.push('/')
     }
+
+    const _posts = clone(posts)
+
+    if (posts[page]) {
+      return document.title = title
+    }
+
+    this.$load(`page/${page}`)
+    .then(res => {
+      _posts[page] = res
+      this.setPosts(_posts)
+    })
 
     document.title = title
   },
 
   computed: {
-    ...mapGetters(['posts', 'config']),
-
     total() {
       const {
         posts,
@@ -70,18 +78,14 @@ export default {
         config: { per_page }
       } = this
 
-      if (!posts.length) {
-        return []
-      }
-      if (per_page === 0) {
-        return posts
-      }
-      return clone(posts).splice((page - 1) * per_page, per_page)
+      return posts[page] || []
     },
 
     page() {
       return +this.$route.params.page || 1
-    }
+    },
+
+    ...mapGetters(['posts', 'config'])
   },
 
   watch: {
@@ -98,14 +102,19 @@ export default {
         page
       } = this
 
-      if (posts.length <= (page - 1) * per_page) {
-        this.disabled = true
-        this.$load(`page/${page}`)
-        .then((res) => {
-          this.disabled = false
-          this.setPosts(posts.concat(res))
-        })
+      const _posts = clone(posts)
+
+      if (posts[page]) {
+        return
       }
+
+      this.disabled = true
+      this.$load(`page/${page}`)
+      .then((res) => {
+        this.disabled = false
+        _posts[page] = res
+        this.setPosts(_posts)
+      })
     },
 
     ...mapActions(['setPosts'])
