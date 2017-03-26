@@ -81,6 +81,9 @@ export default {
       if (!tag.posts) {
         return []
       }
+      if (per_page === 0) {
+        return tag.posts
+      }
       return clone(tag.posts).splice((tag_current - 1) * per_page, per_page)
     },
 
@@ -95,7 +98,7 @@ export default {
         }
       } = this
 
-      if (!tags) {
+      if (per_page === 0) {
         return 1
       }
 

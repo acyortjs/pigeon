@@ -81,6 +81,9 @@ export default {
       if (!category.posts) {
         return []
       }
+      if (per_page === 0) {
+        return category.posts
+      }
       return clone(category.posts).splice((category_current - 1) * per_page, per_page)
     },
 
@@ -95,7 +98,7 @@ export default {
         }
       } = this
 
-      if (!categories) {
+      if (per_page === 0) {
         return 1
       }
 

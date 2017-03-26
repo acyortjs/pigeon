@@ -9,7 +9,7 @@
       :to="value"
     >{{ key }}</router-link>
   </div>
-  <div class="spin" :class="loading ? 'active' : ''">{{ loading }}</div>
+  <div class="spin" :class="loading ? 'active' : ''"></div>
 </div>
 
 </template>
@@ -40,11 +40,9 @@ export default {
 <style lang="postcss">
 
 .header {
-  flex: 1;
-
-  & p {
-    color: #444;
-  }
+  text-align: center;
+  background: #f5f4f2;
+  color: #0f0f0f;
 }
 
 </style>

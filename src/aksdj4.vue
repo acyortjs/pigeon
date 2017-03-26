@@ -45,6 +45,13 @@ export default {
 
 @import "../node_modules/normalize.css/normalize.css";
 
+html, body {
+  background: #fff;
+}
+body {
+  font-family: PingFang SC, Verdana, Helvetica Neue, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
+  padding: 30px;
+}
 .main {
   position: relative;
 }

@@ -57,10 +57,10 @@ export default {
         per_page
       } = this.config
 
-      if (posts && posts.length) {
-        return Math.ceil(posts.length / per_page)
+      if (per_page === 0 || posts.length === 0) {
+        return 1
       }
-      return 1
+      return Math.ceil(posts.length / per_page)
     },
 
     items() {
@@ -70,8 +70,11 @@ export default {
         config: { per_page }
       } = this
 
-      if (!per_page || !posts.length) {
+      if (!posts.length) {
         return []
+      }
+      if (per_page === 0) {
+        return posts
       }
       return clone(posts).splice((current - 1) * per_page, per_page)
     }

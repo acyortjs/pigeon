@@ -53,10 +53,10 @@ export default {
         archives_per_page
       } = this.config
 
-      if (posts && posts.length) {
-        return Math.ceil(posts.length / archives_per_page)
+      if (archives_per_page === 0 || posts.length === 0) {
+        return 1
       }
-      return 1
+      return Math.ceil(posts.length / archives_per_page)
     },
 
     items() {
@@ -66,8 +66,11 @@ export default {
         archive_current
       } = this
 
-      if (!archives_per_page || !archives.length) {
+      if (!archives.length) {
         return []
+      }
+      if (archives_per_page === 0) {
+        return archives
       }
       return clone(archives).splice((archive_current - 1) * archives_per_page, archives_per_page)
     }

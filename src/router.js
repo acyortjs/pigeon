@@ -19,6 +19,10 @@ const routes = [
   },
   {
     path: '/archives',
+    redirect: '/archives/1'
+  },
+  {
+    path: '/archives/:page',
     component: Archives
   },
   {
