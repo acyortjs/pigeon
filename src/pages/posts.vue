@@ -9,9 +9,9 @@
   </div>
 
   <div class="nav">
-    <button @click="setCurrent(current - 1)" :disabled="current <= 1 || disabled">上一页</button>
-    <span>{{ current }} / {{ total }}</span>
-    <button @click="setCurrent(current + 1)" :disabled="current >= total || disabled">下一页</button>
+    <button @click="$router.push(page == 2 ? '/' : `/page/${page - 1}`)" :disabled="page <= 1 || disabled">上一页</button>
+    <span>{{ page }} / {{ total }}</span>
+    <button @click="$router.push(`/page/${page + 1}`)" :disabled="page >= total || disabled">下一页</button>
   </div>
 </div>
 
@@ -33,13 +33,13 @@ export default {
 
   created() {
     const {
-      current,
       posts,
+      page,
       config: { title }
     } = this
 
     if (!posts.length) {
-      this.$load(`page/${current}`)
+      this.$load(`page/${page}`)
       .then(res => {
         this.setPosts(res)
       })
@@ -49,7 +49,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters(['posts', 'config', 'current']),
+    ...mapGetters(['posts', 'config']),
 
     total() {
       const {
@@ -66,7 +66,7 @@ export default {
     items() {
       const {
         posts,
-        current,
+        page,
         config: { per_page }
       } = this
 
@@ -76,12 +76,16 @@ export default {
       if (per_page === 0) {
         return posts
       }
-      return clone(posts).splice((current - 1) * per_page, per_page)
+      return clone(posts).splice((page - 1) * per_page, per_page)
+    },
+
+    page() {
+      return +this.$route.params.page || 1
     }
   },
 
   watch: {
-    current() {
+    page() {
       this.getPosts()
     }
   },
@@ -91,12 +95,12 @@ export default {
       const {
         config: { per_page },
         posts,
-        current
+        page
       } = this
 
-      if (posts.length <= (current - 1) * per_page) {
+      if (posts.length <= (page - 1) * per_page) {
         this.disabled = true
-        this.$load(`page/${current}`)
+        this.$load(`page/${page}`)
         .then((res) => {
           this.disabled = false
           this.setPosts(posts.concat(res))
@@ -104,7 +108,7 @@ export default {
       }
     },
 
-    ...mapActions(['setPosts', 'setCurrent'])
+    ...mapActions(['setPosts'])
   }
 }
 

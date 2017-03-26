@@ -9,42 +9,21 @@ import Category from './pages/category'
 import Tag from './pages/tag'
 
 const routes = [
-  {
-    path: '/',
-    component: Posts
-  },
-  {
-    path: '/posts/:id',
-    component: Post
-  },
-  {
-    path: '/archives',
-    redirect: '/archives/1'
-  },
-  {
-    path: '/archives/:page',
-    component: Archives
-  },
-  {
-    path: '/categories',
-    component: Categories
-  },
-  {
-    path: '/tags',
-    component: Tags
-  },
-  {
-    path: '/categories/:id',
-    component: Category
-  },
-  {
-    path: '/tags/:id',
-    component: Tag
-  },
-  {
-    path: '*',
-    redirect: '/'
-  }
+  { path: '/', component: Posts },
+  { path: '/page/:page', component: Posts },
+
+  { path: '/posts/:id', component: Post },
+
+  { path: '/archives', component: Archives },
+  { path: '/archives/:page', component: Archives },
+
+  { path: '/categories', component: Categories },
+  { path: '/tags', component: Tags },
+
+  { path: '/categories/:id', component: Category },
+  { path: '/tags/:id', component: Tag },
+
+  { path: '*', redirect: '/' }
 ]
 
 Vue.use(VueRouter)

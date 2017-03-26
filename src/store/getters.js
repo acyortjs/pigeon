@@ -17,9 +17,6 @@ export default {
   config(state) {
     return state.config
   },
-  current(state) {
-    return state.current
-  },
   category_current(state) {
     return state.category_current
   },

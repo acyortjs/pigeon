@@ -17,9 +17,6 @@ export default {
   CONFIG(state, config) {
     state.config = config
   },
-  CURRENT(state, current) {
-    state.current = current
-  },
   CATEGORYCURRENT(state, category_current) {
     state.category_current = category_current
   },

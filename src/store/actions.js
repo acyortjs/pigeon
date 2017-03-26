@@ -17,9 +17,6 @@ export default {
   setConfig({ commit }, config) {
     commit('CONFIG', config)
   },
-  setCurrent({ commit }, current) {
-    commit('CURRENT', current)
-  },
   setCategoryCurrent({ commit }, category_current) {
     commit('CATEGORYCURRENT', category_current)
   },

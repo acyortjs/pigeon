@@ -2,7 +2,7 @@
 
 <div>
   <div class="nav">
-    <button @click="$router.push(`/archives/${page - 1}`)" :disabled="page <= 1 || disabled">上一页</button>
+    <button @click="$router.push(page == 2 ? '/archives' : `/archives/${page - 1}`)" :disabled="page <= 1 || disabled">上一页</button>
     <span>{{ page }} / {{ total }}</span>
     <button @click="$router.push(`/archives/${page + 1}`)" :disabled="page >= total || disabled">下一页</button>
   </div>
@@ -58,7 +58,7 @@ export default {
     },
 
     page() {
-      return +this.$route.params.page
+      return +this.$route.params.page || 1
     },
 
     items() {
