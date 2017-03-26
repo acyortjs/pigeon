@@ -20,9 +20,6 @@ export default {
   setCurrent({ commit }, current) {
     commit('CURRENT', current)
   },
-  setArchiveCurrent({ commit }, archive_current) {
-    commit('ARCHIVECURRENT', archive_current)
-  },
   setCategoryCurrent({ commit }, category_current) {
     commit('CATEGORYCURRENT', category_current)
   },

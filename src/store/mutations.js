@@ -20,9 +20,6 @@ export default {
   CURRENT(state, current) {
     state.current = current
   },
-  ARCHIVECURRENT(state, archive_current) {
-    state.archive_current = archive_current
-  },
   CATEGORYCURRENT(state, category_current) {
     state.category_current = category_current
   },

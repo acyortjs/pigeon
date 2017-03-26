@@ -2,9 +2,9 @@
 
 <div>
   <div class="nav">
-    <button @click="setArchiveCurrent(archive_current - 1)" :disabled="archive_current <= 1 || disabled">上一页</button>
-    <span>{{ archive_current }} / {{ total }}</span>
-    <button @click="setArchiveCurrent(archive_current + 1)" :disabled="archive_current >= total || disabled">下一页</button>
+    <button @click="$router.push(`/archives/${page - 1}`)" :disabled="page <= 1 || disabled">上一页</button>
+    <span>{{ page }} / {{ total }}</span>
+    <button @click="$router.push(`/archives/${page + 1}`)" :disabled="page >= total || disabled">下一页</button>
   </div>
 
   <div class="archives">
@@ -32,12 +32,12 @@ export default {
 
   created() {
     const {
-      archive_current,
+      page,
       archives
     } = this
 
     if (!archives.length) {
-      this.$load(`archives/${archive_current}`)
+      this.$load(`archives/${page}`)
       .then(res => this.setArchives(res))
     }
 
@@ -45,8 +45,6 @@ export default {
   },
 
   computed: {
-    ...mapGetters(['config', 'archives', 'archive_current']),
-
     total() {
       const {
         posts,
@@ -59,11 +57,15 @@ export default {
       return Math.ceil(posts.length / archives_per_page)
     },
 
+    page() {
+      return +this.$route.params.page
+    },
+
     items() {
       const {
         archives,
-        config: { archives_per_page },
-        archive_current
+        page,
+        config: { archives_per_page }
       } = this
 
       if (!archives.length) {
@@ -72,12 +74,14 @@ export default {
       if (archives_per_page === 0) {
         return archives
       }
-      return clone(archives).splice((archive_current - 1) * archives_per_page, archives_per_page)
-    }
+      return clone(archives).splice((page - 1) * archives_per_page, archives_per_page)
+    },
+
+    ...mapGetters(['config', 'archives'])
   },
 
   watch: {
-    archive_current() {
+    page() {
       this.getArchives()
     }
   },
@@ -86,13 +90,13 @@ export default {
     getArchives() {
       const {
         config: { archives_per_page },
-        archives,
-        archive_current
+        page,
+        archives
       } = this
 
-      if (archives.length <= (archive_current - 1) * archives_per_page) {
+      if (archives.length <= (page - 1) * archives_per_page) {
         this.disabled = true
-        this.$load(`archives/${archive_current}`)
+        this.$load(`archives/${page}`)
         .then((res) => {
           this.disabled = false
           this.setArchives(archives.concat(res))
@@ -100,7 +104,7 @@ export default {
       }
     },
 
-    ...mapActions(['setArchives', 'setArchiveCurrent'])
+    ...mapActions(['setArchives'])
   }
 }
 

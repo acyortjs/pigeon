@@ -20,9 +20,6 @@ export default {
   current(state) {
     return state.current
   },
-  archive_current(state) {
-    return state.archive_current
-  },
   category_current(state) {
     return state.category_current
   },
