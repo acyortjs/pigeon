@@ -10,13 +10,13 @@
 
   <div class="nav">
     <button
-      @click="setTagCurrent(tag_current - 1)"
-      :disabled="tag_current <= 1 || disabled"
+      @click="$router.push(page == 2 ? `/tags/${id}` : `/tags/${id}/${page - 1}`)"
+      :disabled="page <= 1 || disabled"
     >上一页</button>
-    <span>{{ tag_current }} / {{ total }}</span>
+    <span>{{ page }} / {{ total }}</span>
     <button
-      @click="setTagCurrent(tag_current + 1)"
-      :disabled="tag_current >= total || disabled"
+      @click="$router.push(`/tags/${id}/${page + 1}`)"
+      :disabled="page >= total || disabled"
     >下一页</button>
   </div>
 </div>
@@ -43,9 +43,7 @@ export default {
         title,
         tags
       },
-      $route: {
-        params: { id }
-      }
+      id
     } = this
     const { name } = tags.filter(tag => tag.id == id)[0]
 
@@ -54,7 +52,7 @@ export default {
   },
 
   watch: {
-    tag_current() {
+    page() {
       this.getPosts()
     }
   },
@@ -62,19 +60,25 @@ export default {
   computed: {
     tag() {
       const {
-        $route: {
-          params: { id }
-        },
+        id,
         tags
       } = this
 
       return tags[id] || {}
     },
 
+    id() {
+      return this.$route.params.id
+    },
+
+    page() {
+      return +this.$route.params.page || 1
+    },
+
     posts() {
       const {
         tag,
-        tag_current,
+        page,
         config: { per_page }
       } = this
 
@@ -84,7 +88,7 @@ export default {
       if (per_page === 0) {
         return tag.posts
       }
-      return clone(tag.posts).splice((tag_current - 1) * per_page, per_page)
+      return clone(tag.posts).splice((page - 1) * per_page, per_page)
     },
 
     total() {
@@ -93,9 +97,7 @@ export default {
           tags,
           per_page,
         },
-        $route: {
-          params: { id }
-        }
+        id,
       } = this
 
       if (per_page === 0) {
@@ -106,18 +108,16 @@ export default {
       return Math.ceil(count / per_page)
     },
 
-    ...mapGetters(['config', 'tag_current', 'tags'])
+    ...mapGetters(['config', 'tags'])
   },
 
   methods: {
     getPosts() {
       const {
-        $route: {
-          params: { id }
-        },
+        id,
         config: { per_page },
         tags,
-        tag_current
+        page
       } = this
 
       const _tags = clone(tags)
@@ -130,7 +130,7 @@ export default {
         })
       }
 
-      if (tags[id].posts.length <= (tag_current - 1) * per_page) {
+      if (tags[id].posts.length <= (page - 1) * per_page) {
         this.loadPosts()
         .then((res) => {
           _tags[id].posts = _tags[id].posts.concat(res.posts)
@@ -141,21 +141,19 @@ export default {
 
     loadPosts() {
       const {
-        $route: {
-          params: { id }
-        },
-        tag_current
+        id,
+        page
       } = this
 
       this.disabled = true
-      return this.$load(`tags/${id}/${tag_current}`)
+      return this.$load(`tags/${id}/${page}`)
       .then((res) => {
         this.disabled = false
         return res
       })
     },
 
-    ...mapActions(['setTags', 'setTagCurrent'])
+    ...mapActions(['setTags'])
   }
 }
 

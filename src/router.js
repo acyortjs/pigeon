@@ -28,7 +28,13 @@ const routes = [
     ]
   },
 
-  { path: '/tags/:id', component: Tag },
+  {
+    path: '/tags/:id',
+    component: Tag,
+    children: [
+      { path: ':page', component: Tag }
+    ]
+  },
 
   { path: '*', redirect: '/' }
 ]

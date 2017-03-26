@@ -16,7 +16,7 @@
 
 <script>
 
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'tags',
@@ -26,12 +26,7 @@ export default {
   },
 
   created() {
-    this.setTagCurrent(1)
     document.title = `All Tags - ${this.config.title}`
-  },
-
-  methods: {
-    ...mapActions(['setTagCurrent'])
   }
 }
 

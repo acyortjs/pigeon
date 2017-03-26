@@ -1,5 +1,4 @@
 export default {
-  tag_current: 1,
   posts: [],
   archives: [],
   categories: {},

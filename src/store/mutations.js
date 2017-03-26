@@ -17,9 +17,6 @@ export default {
   CONFIG(state, config) {
     state.config = config
   },
-  TAGCURRENT(state, tag_current) {
-    state.tag_current = tag_current
-  },
   MESSAGE(state, message) {
     state.message = message
   },

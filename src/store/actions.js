@@ -17,9 +17,6 @@ export default {
   setConfig({ commit }, config) {
     commit('CONFIG', config)
   },
-  setTagCurrent({ commit }, tag_current) {
-    commit('TAGCURRENT', tag_current)
-  },
   setMessage({ commit }, message) {
     commit('MESSAGE', message)
   },

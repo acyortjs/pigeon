@@ -17,9 +17,6 @@ export default {
   config(state) {
     return state.config
   },
-  tag_current(state) {
-    return state.tag_current
-  },
   message(state) {
     return state.message
   },
