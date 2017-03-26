@@ -16,7 +16,7 @@
 
 <script>
 
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'categories',
@@ -26,12 +26,7 @@ export default {
   },
 
   created() {
-    this.setCategoryCurrent(1)
     document.title = `All Categories - ${this.config.title}`
-  },
-
-  methods: {
-    ...mapActions(['setCategoryCurrent'])
   }
 }
 

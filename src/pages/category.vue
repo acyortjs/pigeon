@@ -10,13 +10,13 @@
 
   <div class="nav">
     <button
-      @click="setCategoryCurrent(category_current - 1)"
-      :disabled="category_current <= 1 || disabled"
+      @click="$router.push(page == 2 ? `/categories/${id}` : `/categories/${id}/${page - 1}`)"
+      :disabled="page <= 1 || disabled"
     >上一页</button>
-    <span>{{ category_current }} / {{ total }}</span>
+    <span>{{ page }} / {{ total }}</span>
     <button
-      @click="setCategoryCurrent(category_current + 1)"
-      :disabled="category_current >= total || disabled"
+      @click="$router.push(`/categories/${id}/${page + 1}`)"
+      :disabled="page >= total || disabled"
     >下一页</button>
   </div>
 </div>
@@ -43,9 +43,7 @@ export default {
         title,
         categories
       },
-      $route: {
-        params: { id }
-      }
+      id
     } = this
     const { name } = categories.filter(category => category.id == id)[0]
 
@@ -54,7 +52,7 @@ export default {
   },
 
   watch: {
-    category_current() {
+    page() {
       this.getPosts()
     }
   },
@@ -62,19 +60,25 @@ export default {
   computed: {
     category() {
       const {
-        $route: {
-          params: { id }
-        },
+        id,
         categories
       } = this
 
       return categories[id] || {}
     },
 
+    id() {
+      return this.$route.params.id
+    },
+
+    page() {
+      return +this.$route.params.page || 1
+    },
+
     posts() {
       const {
         category,
-        category_current,
+        page,
         config: { per_page }
       } = this
 
@@ -84,7 +88,7 @@ export default {
       if (per_page === 0) {
         return category.posts
       }
-      return clone(category.posts).splice((category_current - 1) * per_page, per_page)
+      return clone(category.posts).splice((page - 1) * per_page, per_page)
     },
 
     total() {
@@ -93,9 +97,7 @@ export default {
           categories,
           per_page,
         },
-        $route: {
-          params: { id }
-        }
+        id
       } = this
 
       if (per_page === 0) {
@@ -106,18 +108,16 @@ export default {
       return Math.ceil(count / per_page)
     },
 
-    ...mapGetters(['config', 'category_current', 'categories'])
+    ...mapGetters(['config', 'categories'])
   },
 
   methods: {
     getPosts() {
       const {
-        $route: {
-          params: { id }
-        },
+        id,
         config: { per_page },
         categories,
-        category_current
+        page
       } = this
 
       const _categories = clone(categories)
@@ -130,7 +130,7 @@ export default {
         })
       }
 
-      if (categories[id].posts.length <= (category_current - 1) * per_page) {
+      if (categories[id].posts.length <= (page - 1) * per_page) {
         this.loadPosts()
         .then((res) => {
           _categories[id].posts = _categories[id].posts.concat(res.posts)
@@ -141,21 +141,19 @@ export default {
 
     loadPosts() {
       const {
-        $route: {
-          params: { id }
-        },
-        category_current
+        id,
+        page
       } = this
 
       this.disabled = true
-      return this.$load(`categories/${id}/${category_current}`)
+      return this.$load(`categories/${id}/${page}`)
       .then((res) => {
         this.disabled = false
         return res
       })
     },
 
-    ...mapActions(['setCategories', 'setCategoryCurrent'])
+    ...mapActions(['setCategories'])
   }
 }
 

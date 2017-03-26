@@ -20,7 +20,14 @@ const routes = [
   { path: '/categories', component: Categories },
   { path: '/tags', component: Tags },
 
-  { path: '/categories/:id', component: Category },
+  {
+    path: '/categories/:id',
+    component: Category,
+    children: [
+      { path: ':page', component: Category }
+    ]
+  },
+
   { path: '/tags/:id', component: Tag },
 
   { path: '*', redirect: '/' }

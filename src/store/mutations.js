@@ -17,9 +17,6 @@ export default {
   CONFIG(state, config) {
     state.config = config
   },
-  CATEGORYCURRENT(state, category_current) {
-    state.category_current = category_current
-  },
   TAGCURRENT(state, tag_current) {
     state.tag_current = tag_current
   },
