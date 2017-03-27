@@ -48,13 +48,13 @@ export default {
       total
     } = this
 
+    const { name } = tags.filter(tag => tag.id == id)[0]
     document.title = `${name} - ${title}`
 
     if (page > total) {
       return this.$router.replace(`/tags/${id}`)
     }
 
-    const { name } = tags.filter(tag => tag.id == id)[0]
     this.getPosts()
   },
 

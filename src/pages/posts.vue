@@ -1,12 +1,14 @@
 <template>
 
 <div>
-  <div class="posts">
-    <router-link :key="post.id" :to="`/posts/${post.id}`" v-for="post in items">
-      <h2>{{ post.title }}</h2>
-      <p>{{ post.updated }}</p>
-    </router-link>
-  </div>
+  <ul class="posts">
+    <li v-for="post in items">
+      <router-link :to="`/posts/${post.id}`">{{ post.title }}</router-link>
+      <p>{{ post.updated | timeFormat }}</p>
+      <div v-html="post.summary"></div>
+      <img :src="post.thumb || `https://unsplash.it/200/300/?random=${post.id}&gravity=center`" />
+    </li>
+  </ul>
 
   <div class="nav">
     <button
@@ -34,6 +36,17 @@ export default {
   data() {
     return {
       disabled: false
+    }
+  },
+
+  filters: {
+    timeFormat(time) {
+      return new Date(time)
+      .toString()
+      .split(' ')
+      .filter((t, i) => i >= 1 && i <= 3)
+      .map((t, i) => i == 1 ? `${t},` : t)
+      .join(' ')
     }
   },
 

@@ -5,6 +5,7 @@
   <transition v-if="config.title" name="slide-fade" mode="out-in">
     <router-view class="view"></router-view>
   </transition>
+  <Afooter></Afooter>
   <Notice></Notice>
 </div>
 
@@ -13,6 +14,7 @@
 <script>
 
 import Aheader from './components/header'
+import Afooter from './components/footer'
 import Notice from './components/notice'
 import { mapGetters } from 'vuex'
 
@@ -21,6 +23,7 @@ export default {
 
   components: {
     Aheader,
+    Afooter,
     Notice
   },
 
