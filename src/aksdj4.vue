@@ -52,11 +52,15 @@ html, body {
   background: #fff;
 }
 body {
-  font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+  font-family: Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
   padding: 30px;
 }
 .main {
   position: relative;
+}
+h1, h2, h3, h4, h5 {
+  margin: 0;
+  font-weight: normal;
 }
 
 </style>

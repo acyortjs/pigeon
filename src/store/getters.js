@@ -14,6 +14,9 @@ export default {
   post(state) {
      return state.post
   },
+  page(state) {
+     return state.page
+  },
   config(state) {
     return state.config
   },

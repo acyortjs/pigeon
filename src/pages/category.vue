@@ -52,7 +52,7 @@ export default {
       total
     } = this
 
-    const { name } = categories.filter(category => category.id == id)[0]
+    const { name } = categories.find(category => category.id == id)
     document.title = `${name} - ${title}`
 
     if (page > total) {

@@ -4,6 +4,7 @@ export default {
   categories: {},
   tags: {},
   post: {},
+  page: {},
   config: {},
   loading: false,
   message: '',

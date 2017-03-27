@@ -14,6 +14,9 @@ export default {
   POST(state, post) {
     state.post = post
   },
+  PAGE(state, page) {
+    state.page = page
+  },
   CONFIG(state, config) {
     state.config = config
   },

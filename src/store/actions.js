@@ -14,6 +14,9 @@ export default {
   setPost({ commit }, post) {
     commit('POST', post)
   },
+  setPage({ commit }, page) {
+    commit('PAGE', page)
+  },
   setConfig({ commit }, config) {
     commit('CONFIG', config)
   },
