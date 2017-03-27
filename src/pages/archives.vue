@@ -33,15 +33,28 @@ export default {
   created() {
     const {
       page,
-      archives
+      archives,
+      total,
+      config: { title }
     } = this
 
-    if (!archives.length) {
-      this.$load(`archives/${page}`)
-      .then(res => this.setArchives(res))
+    document.title = `Archives - ${title}`
+
+    if (page > total) {
+      return this.$router.replace('/archives')
     }
 
-    document.title = `Archives - ${this.config.title}`
+    const _archives = clone(archives)
+
+    if (archives[page]) {
+      return
+    }
+
+    this.$load(`archives/${page}`)
+    .then((res) => {
+      _archives[page] = res
+      this.setArchives(_archives)
+    })
   },
 
   computed: {
@@ -68,13 +81,7 @@ export default {
         config: { archives_per_page }
       } = this
 
-      if (!archives.length) {
-        return []
-      }
-      if (archives_per_page === 0) {
-        return archives
-      }
-      return clone(archives).splice((page - 1) * archives_per_page, archives_per_page)
+      return archives[page] || []
     },
 
     ...mapGetters(['config', 'archives'])
@@ -94,14 +101,19 @@ export default {
         archives
       } = this
 
-      if (archives.length <= (page - 1) * archives_per_page) {
-        this.disabled = true
-        this.$load(`archives/${page}`)
-        .then((res) => {
-          this.disabled = false
-          this.setArchives(archives.concat(res))
-        })
+      const _archives = clone(archives)
+
+      if (archives[page]) {
+        return
       }
+
+      this.disabled = true
+      this.$load(`archives/${page}`)
+      .then((res) => {
+        this.disabled = false
+        _archives[page] = res
+        this.setArchives(_archives)
+      })
     },
 
     ...mapActions(['setArchives'])

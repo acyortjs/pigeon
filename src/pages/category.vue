@@ -43,11 +43,18 @@ export default {
         title,
         categories
       },
-      id
+      id,
+      page,
+      total
     } = this
-    const { name } = categories.filter(category => category.id == id)[0]
 
     document.title = `${name} - ${title}`
+
+    if (page > total) {
+      return this.$router.replace(`/categories/${id}`)
+    }
+
+    const { name } = categories.filter(category => category.id == id)[0]
     this.getPosts()
   },
 
@@ -85,10 +92,7 @@ export default {
       if (!category.posts) {
         return []
       }
-      if (per_page === 0) {
-        return category.posts
-      }
-      return clone(category.posts).splice((page - 1) * per_page, per_page)
+      return category.posts[page] || []
     },
 
     total() {
@@ -125,15 +129,17 @@ export default {
       if (!categories[id]) {
         return this.loadPosts()
         .then((res) => {
-          _categories[id] = res
+          const { name, posts } = res
+          _categories[id] = { id, name, posts: {} }
+          _categories[id].posts[page] = posts
           this.setCategories(_categories)
         })
       }
 
-      if (categories[id].posts.length <= (page - 1) * per_page) {
+      if (!categories[id].posts[page]) {
         this.loadPosts()
         .then((res) => {
-          _categories[id].posts = _categories[id].posts.concat(res.posts)
+          _categories[id].posts[page] = res.posts
           this.setCategories(_categories)
         })
       }

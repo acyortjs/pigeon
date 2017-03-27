@@ -1,6 +1,6 @@
 export default {
   posts: {},
-  archives: [],
+  archives: {},
   categories: {},
   tags: {},
   post: {},

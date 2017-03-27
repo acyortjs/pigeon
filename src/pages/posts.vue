@@ -9,9 +9,15 @@
   </div>
 
   <div class="nav">
-    <button @click="$router.push(page == 2 ? '/' : `/page/${page - 1}`)" :disabled="page <= 1 || disabled">上一页</button>
+    <button
+      @click="$router.push(page == 2 ? '/' : `/page/${page - 1}`)"
+      :disabled="page <= 1 || disabled"
+    >上一页</button>
     <span>{{ page }} / {{ total }}</span>
-    <button @click="$router.push(`/page/${page + 1}`)" :disabled="page >= total || disabled">下一页</button>
+    <button
+      @click="$router.push(`/page/${page + 1}`)"
+      :disabled="page >= total || disabled"
+    >下一页</button>
   </div>
 </div>
 
@@ -39,23 +45,23 @@ export default {
       config: { title }
     } = this
 
+    document.title = title
+
     if (page > total) {
-      return this.$router.push('/')
+      return this.$router.replace('/')
     }
 
     const _posts = clone(posts)
 
     if (posts[page]) {
-      return document.title = title
+      return
     }
 
     this.$load(`page/${page}`)
-    .then(res => {
+    .then((res) => {
       _posts[page] = res
       this.setPosts(_posts)
     })
-
-    document.title = title
   },
 
   computed: {

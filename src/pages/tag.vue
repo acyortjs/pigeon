@@ -43,11 +43,18 @@ export default {
         title,
         tags
       },
-      id
+      id,
+      page,
+      total
     } = this
-    const { name } = tags.filter(tag => tag.id == id)[0]
 
     document.title = `${name} - ${title}`
+
+    if (page > total) {
+      return this.$router.replace(`/tags/${id}`)
+    }
+
+    const { name } = tags.filter(tag => tag.id == id)[0]
     this.getPosts()
   },
 
@@ -85,10 +92,7 @@ export default {
       if (!tag.posts) {
         return []
       }
-      if (per_page === 0) {
-        return tag.posts
-      }
-      return clone(tag.posts).splice((page - 1) * per_page, per_page)
+      return tag.posts[page] || []
     },
 
     total() {
@@ -125,15 +129,17 @@ export default {
       if (!tags[id]) {
         return this.loadPosts()
         .then((res) => {
-          _tags[id] = res
+          const { name, posts } = res
+          _tags[id] = { id, name, posts: {} }
+          _tags[id].posts[page] = posts
           this.setTags(_tags)
         })
       }
 
-      if (tags[id].posts.length <= (page - 1) * per_page) {
+      if (!tags[id].posts[page]) {
         this.loadPosts()
         .then((res) => {
-          _tags[id].posts = _tags[id].posts.concat(res.posts)
+          _tags[id].posts[page] = res.posts
           this.setTags(_tags)
         })
       }
