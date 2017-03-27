@@ -1,7 +1,6 @@
 <template>
 
 <div class="header">
-  <router-link :to="'/'">{{ config.title }}</router-link>
   <div v-if="config.menu" class="menu">
     <router-link
       v-for="(value, key) in config.menu"
@@ -9,6 +8,7 @@
       :to="value"
     >{{ key }}</router-link>
   </div>
+  <h1>{{ config.title }}</h1>
   <div class="spin" :class="loading ? 'active' : ''"></div>
 </div>
 

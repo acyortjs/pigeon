@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Posts from './pages/posts'
+import Home from './pages/home'
 import Post from './pages/post'
 import Archives from './pages/archives'
 import Categories from './pages/categories'
@@ -9,8 +9,8 @@ import Category from './pages/category'
 import Tag from './pages/tag'
 
 const routes = [
-  { path: '/', component: Posts },
-  { path: '/page/:page', component: Posts },
+  { path: '/', component: Home },
+  { path: '/page/:page', component: Home },
 
   { path: '/posts/:id', component: Post },
 

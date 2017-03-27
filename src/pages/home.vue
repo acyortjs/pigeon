@@ -1,14 +1,7 @@
 <template>
 
 <div>
-  <ul class="posts">
-    <li v-for="post in items">
-      <router-link :to="`/posts/${post.id}`">{{ post.title }}</router-link>
-      <p>{{ post.updated | timeFormat }}</p>
-      <div v-html="post.summary"></div>
-      <img :src="post.thumb || `https://unsplash.it/200/300/?random=${post.id}&gravity=center`" />
-    </li>
-  </ul>
+  <Posts :posts="items"></Posts>
 
   <div class="nav">
     <button
@@ -28,25 +21,19 @@
 <script>
 
 import { mapActions, mapGetters } from 'vuex'
+import Posts from '../components/posts'
 import { clone } from '../utils'
 
 export default {
-  name: 'posts',
+  name: 'home',
+
+  components: {
+    Posts
+  },
 
   data() {
     return {
       disabled: false
-    }
-  },
-
-  filters: {
-    timeFormat(time) {
-      return new Date(time)
-      .toString()
-      .split(' ')
-      .filter((t, i) => i >= 1 && i <= 3)
-      .map((t, i) => i == 1 ? `${t},` : t)
-      .join(' ')
     }
   },
 
@@ -143,8 +130,5 @@ export default {
 </script>
 
 <style lang="postcss">
-
-.posts {
-}
 
 </style>

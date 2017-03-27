@@ -3,10 +3,9 @@
 <div>
   <div class="tag">
     <h2>{{ tag.name }}</h2>
-    <router-link :key="post.id" :to="`/posts/${post.id}`" v-for="post in posts">
-      <p>{{ post.title }}</p>
-    </router-link>
   </div>
+
+  <Posts :posts="posts"></Posts>
 
   <div class="nav">
     <button
@@ -26,10 +25,15 @@
 <script>
 
 import { mapActions, mapGetters } from 'vuex'
+import Posts from '../components/posts'
 import { clone } from '../utils'
 
 export default {
   name: 'tag',
+
+  components: {
+    Posts
+  },
 
   data() {
     return {

@@ -79,6 +79,7 @@ export default {
 <style lang="postcss">
 
 .post {
+  font-family: PingFang SC, Verdana, Helvetica Neue, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
 }
 
 </style>
