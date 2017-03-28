@@ -41,6 +41,8 @@ export default {
       }
     } = this
 
+    document.title = `${name} - ${title}`
+
     if (page[name]) {
       return this.post = page[name]
     }
@@ -50,8 +52,6 @@ export default {
     if (!currentPage) {
       return this.setMessage('No This Page')
     }
-
-    document.title = `${name} - ${title}`
 
     const { id } = currentPage
     const _page = clone(page)

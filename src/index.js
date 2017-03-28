@@ -15,7 +15,9 @@ Vue.prototype.$load = function(...urls) {
   return axios.all(args)
   .then(
     axios.spread((...res) => {
-      this.$store.dispatch('setLoading', false)
+      setTimeout(() => {
+        this.$store.dispatch('setLoading', false)
+      }, 1500)
 
       if (res.length == 1) {
         return res[0].data

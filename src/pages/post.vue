@@ -79,7 +79,7 @@ export default {
 <style lang="postcss">
 
 .post {
-  font-family: PingFang SC, Verdana, Helvetica Neue, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
+  font-family: San Francisco, -apple-system, BlinkMacSystemFont, Microsoft Yahei, "微軟正黑體", "Microsoft JhengHei", helvetica, sans-serifsans-serif;
 }
 
 </style>
