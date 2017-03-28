@@ -57,8 +57,19 @@ html, body {
   background: #fff;
 }
 body {
-  font-family: Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
+
+.slide-fade-enter-active,
+.slide-fade-leave-active {
+    transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter,
+.slide-fade-leave-active {
+    transform: translateX(10px);
+    opacity: 0;
+}
+
 .container {
   position: relative;
 }
@@ -67,7 +78,7 @@ body {
   padding: 30px;
   transition: padding .3s ease;
 }
-h1, h2, h3, h4, h5 {
+h1, h2, h3, h4, h5, p {
   margin: 0;
   font-weight: normal;
 }

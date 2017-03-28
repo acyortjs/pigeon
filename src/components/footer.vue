@@ -24,6 +24,29 @@ export default {
 <style lang="postcss">
 
 .footer {
+  background: #f5f4f2;
+  padding: 30px;
+  color: #000;
+  margin-top: 50px;
+  letter-spacing: 1.5px;
+
+  & h4 {
+    font-size: 15px;
+    margin-bottom: 20px;
+  }
+
+  & p {
+    color: #9b9b9b;
+    font-size: 13px;
+  }
+
+  & a {
+    color: #000;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 </style>
