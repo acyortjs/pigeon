@@ -1,16 +1,9 @@
 <template>
 
 <div class="header" :class="className">
-  <div v-if="config.menu" class="menu">
-    <router-link
-      v-for="(value, key) in config.menu"
-      :key="value"
-      :to="value"
-    >{{ key }}</router-link>
-  </div>
-  <h1>{{ config.title }}</h1>
+  <router-link to="/">{{ config.title }}</router-link>
   <div class="btns">
-    <button :disabled="loading"></button>
+    <button @click="toggle" :disabled="loading"></button>
     <a v-if="className != 'list'" href="javascript:history.back()">BACK</a>
   </div>
 </div>
@@ -31,26 +24,35 @@ export default {
   },
 
   computed: {
-    ...mapGetters(['config', 'loading'])
+    ...mapGetters(['config', 'loading', 'menu'])
   },
 
   created() {
+    this.setClass()
     this.$load('config')
     .then(res => this.setConfig(res))
   },
 
   watch: {
     $route() {
+      this.setClass()
+    }
+  },
+
+  methods: {
+    toggle() {
+      this.setMenu(!this.menu)
+    },
+
+    setClass() {
       const { name } = this.$route
       if (name == 'post' || name == 'page') {
         return this.className = ''
       }
       this.className = 'list'
-    }
-  },
+    },
 
-  methods: {
-    ...mapActions(['setConfig'])
+    ...mapActions(['setConfig', 'setMenu'])
   }
 }
 
@@ -59,15 +61,26 @@ export default {
 <style lang="postcss">
 
 @keyframes spinner {
-  to {transform: rotate(360deg);}
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .header {
   text-align: center;
   background: #f5f4f2;
-  color: #0f0f0f;
   position: relative;
-  height: 100px;
+  padding: 20px 0 30px;
+
+  & a {
+    font-size: 20px;
+    letter-spacing: 2px;
+    color: #0f0f0f;
+  }
+
+  &.list {
+    background: transparent;
+  }
 }
 .btns {
   position: absolute;
@@ -117,7 +130,7 @@ export default {
         border-bottom-color: #fff;
         top: -2px;
         left: 0;
-        animation: spinner .8s ease infinite;
+        animation: spinner 1s ease infinite;
       }
     }
   }
@@ -134,8 +147,6 @@ export default {
     line-height: 33px;
     font-family: serif;
   }
-}
-.menu {
 }
 
 </style>

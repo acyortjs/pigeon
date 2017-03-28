@@ -7,6 +7,7 @@ export default {
   page: {},
   config: {},
   loading: false,
+  menu: false,
   message: '',
   colors: {
     "Mercury": "#ff2b2b",

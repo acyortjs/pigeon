@@ -23,6 +23,9 @@ export default {
   setMessage({ commit }, message) {
     commit('MESSAGE', message)
   },
+  setMenu({ commit }, mode) {
+    commit('MENU', mode)
+  },
   setLoading({ commit }, mode) {
     commit('LOADING', mode)
   }

@@ -1,11 +1,14 @@
 <template>
 
-<div class="main">
-  <Aheader></Aheader>
-  <transition v-if="config.title" name="slide-fade" mode="out-in">
-    <router-view class="view"></router-view>
-  </transition>
-  <Afooter></Afooter>
+<div class="container">
+  <AMenu></AMenu>
+  <div class="main">
+    <Aheader></Aheader>
+    <transition v-if="config.title" name="slide-fade" mode="out-in">
+      <router-view class="view"></router-view>
+    </transition>
+    <Afooter></Afooter>
+  </div>
   <Notice></Notice>
 </div>
 
@@ -16,6 +19,7 @@
 import Aheader from './components/header'
 import Afooter from './components/footer'
 import Notice from './components/notice'
+import AMenu from './components/menu'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -24,7 +28,8 @@ export default {
   components: {
     Aheader,
     Afooter,
-    Notice
+    Notice,
+    AMenu
   },
 
   computed: {
@@ -53,10 +58,14 @@ html, body {
 }
 body {
   font-family: Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
-  padding: 30px;
+}
+.container {
+  position: relative;
 }
 .main {
   position: relative;
+  padding: 30px;
+  transition: padding .3s ease;
 }
 h1, h2, h3, h4, h5 {
   margin: 0;
@@ -64,6 +73,9 @@ h1, h2, h3, h4, h5 {
 }
 a {
   text-decoration: none;
+}
+ul {
+  list-style: none;
 }
 
 </style>

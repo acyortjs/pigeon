@@ -20,6 +20,9 @@ export default {
   CONFIG(state, config) {
     state.config = config
   },
+  MENU(state, mode) {
+    state.menu = mode
+  },
   MESSAGE(state, message) {
     state.message = message
   },

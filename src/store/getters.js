@@ -23,6 +23,9 @@ export default {
   message(state) {
     return state.message
   },
+  menu(state) {
+    return state.menu
+  },
   loading(state) {
     return state.loading
   }
