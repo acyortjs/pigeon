@@ -58,6 +58,8 @@ html, body {
 }
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .slide-fade-enter-active,
@@ -77,6 +79,10 @@ body {
   position: relative;
   padding: 30px;
   transition: padding .3s ease;
+}
+.content {
+  width: 96%;
+  max-width: 800px;
 }
 h1, h2, h3, h4, h5, p {
   margin: 0;

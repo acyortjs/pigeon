@@ -1,8 +1,10 @@
 <template>
 
 <div class="page">
-  <h2>{{ post.name }}</h2>
-  <div v-html="post.content"></div>
+  <div class="top">
+    <h2>{{ post.name }}</h2>
+  </div>
+  <div class="content markdown-body" v-html="post.content"></div>
 </div>
 
 </template>
@@ -69,6 +71,8 @@ export default {
 
 <style lang="postcss">
 
-
+.page .top {
+  padding: 50px 0 30px;
+}
 
 </style>

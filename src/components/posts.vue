@@ -15,18 +15,7 @@
 export default {
   name: 'posts',
 
-  props: ['posts'],
-
-  filters: {
-    timeFormat(time) {
-      return new Date(time)
-      .toString()
-      .split(' ')
-      .filter((t, i) => i >= 1 && i <= 3)
-      .map((t, i) => i == 1 ? `${t},` : t)
-      .join(' ')
-    }
-  }
+  props: ['posts']
 }
 
 </script>
