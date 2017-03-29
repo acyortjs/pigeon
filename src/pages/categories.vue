@@ -35,3 +35,9 @@ export default {
 }
 
 </script>
+
+<style lang="postcss">
+
+@import "../components/images.css";
+
+</style>

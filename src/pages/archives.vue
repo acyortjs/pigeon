@@ -1,16 +1,24 @@
 <template>
 
-<div>
-  <div class="nav">
-    <button @click="$router.push(page == 2 ? '/archives' : `/archives/${page - 1}`)" :disabled="page <= 1 || disabled">上一页</button>
-    <span>{{ page }} / {{ total }}</span>
-    <button @click="$router.push(`/archives/${page + 1}`)" :disabled="page >= total || disabled">下一页</button>
-  </div>
+<div class="archives content">
+  <h2>Archives</h2>
+  <ul>
+    <li v-for="post in items">
+      <router-link :to="`/posts/${post.id}`">{{ post.title }}</router-link>
+      <span>{{ post.updated | timeFormat }}</span>
+    </li>
+  </ul>
 
-  <div class="archives">
-    <router-link :key="post.id" :to="`/posts/${post.id}`" v-for="post in items">
-      <p>{{ post.title }}</p>
-    </router-link>
+  <div class="nav">
+    <button
+      @click="$router.push(page == 2 ? '/archives' : `/archives/${page - 1}`)"
+      :disabled="page <= 1 || disabled"
+    >Previous</button>
+    <button
+      @click="$router.push(`/archives/${page + 1}`)"
+      :disabled="page >= total || disabled"
+    >Next</button>
+    <span>{{ page }} / {{ total }}</span>
   </div>
 </div>
 
@@ -124,7 +132,38 @@ export default {
 
 <style lang="postcss">
 
+@import "../components/nav.css";
+
 .archives {
+  margin: 40px auto 0;
+
+  & h2 {
+    color: #000;
+    font-size: 24px;
+  }
+
+  & ul {
+    margin-top: 40px;
+    padding: 0;
+  }
+
+  & li {
+    margin-bottom: 24px;
+    font-size: 15px;
+  }
+
+  & a {
+    color: #333;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  & span {
+    float: right;
+    color: #666;
+  }
 }
 
 </style>
