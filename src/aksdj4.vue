@@ -80,6 +80,9 @@ body {
   padding: 30px;
   transition: padding .3s ease;
 }
+.view {
+  min-height: 600px;
+}
 .content {
   width: 96%;
   max-width: 800px;

@@ -17,7 +17,7 @@
 
   <div class="content markdown-body" v-html="page.content"></div>
 
-  <div v-if="page.tags" class="tags content">
+  <div v-if="page.tags" class="post-tags content">
     <router-link
       v-for="tag in page.tags"
       :key="tag.id"
@@ -137,7 +137,7 @@ export default {
     border: 2px solid #fff;
   }
 }
-.tags {
+.post-tags {
   margin: 40px auto 0;
 
   & a {

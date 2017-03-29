@@ -4,18 +4,19 @@
 <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, user-scalable=no">
 <title> Loading </title>
 <style>
-.loading, .loaing body {
+.loading, .loading body {
   height: 100%;
   margin: 0;
-  text-align: center;
+  position: relative;
 }
 .loading body:before {
   content: '';
   height: 4px;
   width: 160px;
-  display: inline-block;
-  vertical-align: top;
-  margin-top: 36%;
+  position: absolute;
+  left: 50%;
+  margin-left: -80px;
+  top: 36%;
   background-image:-webkit-linear-gradient(left, #0089fa 0%, #0089fa 25%, #ff002b 25%, #ff002b 50%, #ffa900 50%, #ffa900 75%, #00a753 75%, #00a753 100%);
   background-image:linear-gradient(to right, #0089fa 0%, #0089fa 25%, #ff002b 25%, #ff002b 50%, #ffa900 50%, #ffa900 75%, #00a753 75%, #00a753 100%);
   -webkit-animation: loading 1.5s infinite ease;
