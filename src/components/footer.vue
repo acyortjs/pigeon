@@ -32,7 +32,7 @@ export default {
   background: #f5f4f2;
   padding: 30px;
   color: #000;
-  margin-top: 50px;
+  margin-top: 100px;
   letter-spacing: 1.5px;
 
   & h4 {

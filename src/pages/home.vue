@@ -1,18 +1,18 @@
 <template>
 
-<div>
+<div class="home content">
   <Posts :posts="items"></Posts>
 
   <div class="nav">
     <button
       @click="$router.push(page == 2 ? '/' : `/page/${page - 1}`)"
       :disabled="page <= 1 || disabled"
-    >上一页</button>
-    <span>{{ page }} / {{ total }}</span>
+    >Previous</button>
     <button
       @click="$router.push(`/page/${page + 1}`)"
       :disabled="page >= total || disabled"
-    >下一页</button>
+    >Next</button>
+    <span>{{ page }} / {{ total }}</span>
   </div>
 </div>
 
@@ -130,5 +130,10 @@ export default {
 </script>
 
 <style lang="postcss">
+
+.home {
+  margin: 40px auto 0;
+  max-width: 900px;
+}
 
 </style>

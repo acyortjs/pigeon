@@ -43,9 +43,14 @@ const routes = [
   { path: '*', redirect: '/' }
 ]
 
+const scrollBehavior = (to, from, savedPosition) => {
+  return { x: 0, y: 0 }
+}
+
 Vue.use(VueRouter)
 
 export default new VueRouter({
   mode: 'history',
+  scrollBehavior,
   routes
 })

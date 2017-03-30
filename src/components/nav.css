@@ -1,6 +1,7 @@
 .nav {
-  margin-top: 70px;
   position: relative;
+  margin: 70px auto 0;
+  width: 60%;
 
   &:before {
     content: '';

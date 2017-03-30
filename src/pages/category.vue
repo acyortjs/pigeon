@@ -1,22 +1,18 @@
 <template>
 
-<div>
-  <div class="category">
-    <h2>{{ category.name }}</h2>
-  </div>
-
+<div class="category content">
   <Posts :posts="posts"></Posts>
 
   <div class="nav">
     <button
       @click="$router.push(page == 2 ? `/categories/${id}` : `/categories/${id}/${page - 1}`)"
       :disabled="page <= 1 || disabled"
-    >上一页</button>
-    <span>{{ page }} / {{ total }}</span>
+    >Previous</button>
     <button
       @click="$router.push(`/categories/${id}/${page + 1}`)"
       :disabled="page >= total || disabled"
-    >下一页</button>
+    >Next</button>
+    <span>{{ page }} / {{ total }}</span>
   </div>
 </div>
 
@@ -172,6 +168,8 @@ export default {
 <style lang="postcss">
 
 .category {
+  margin: 40px auto 0;
+  max-width: 900px;
 }
 
 </style>
