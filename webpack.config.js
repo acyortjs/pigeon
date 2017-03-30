@@ -16,7 +16,7 @@ const config = {
   },
 
   resolve: {
-    extensions: ['.js', '.vue', '.svg']
+    extensions: ['.js', '.vue']
   },
 
   plugins: [
@@ -33,10 +33,6 @@ const config = {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: 'babel-loader'
-      },
-      {
-        test: /\.svg$/,
-        loader: 'svg-inline-loader'
       }
     ]
   },

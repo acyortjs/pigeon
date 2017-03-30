@@ -64,6 +64,10 @@ export default {
     &:first-letter {
       text-transform: uppercase;
     }
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 
