@@ -50,7 +50,7 @@ const config = {
 if (isProd) {
   config.entry.vendors = ['axios', 'vue', 'vuex', 'vue-router']
   config.output = {
-    path: 'dist',
+    path: `${__dirname}/dist`,
     filename: '[name].[chunkhash:8].js',
     chunkFilename: '[name].[chunkhash:8].js'
   }
