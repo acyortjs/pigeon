@@ -29,6 +29,7 @@ export default {
   height: 100%;
   top: 0;
   display: none;
+  background: #fff;
 
   &.active {
     display: block;

@@ -26,7 +26,7 @@ Vue.prototype.$load = function(...urls) {
     })
   )
   .catch((err) => {
-    this.$store.dispatch('setMessage', 'Network Error')
+    this.$store.dispatch('setMessage', 'Network Error | 404')
     return Promise.reject()
   })
 }
