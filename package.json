@@ -1,10 +1,10 @@
 {
   "name": "aksdj4",
   "version": "0.1.0",
-  "description": "AcyOrt theme aksdj4",
+  "description": "A blog powered by AcyOrt & Vue.js",
   "scripts": {
     "dev": "webpack-dev-server --inline --hot",
-    "build": "cross-env NODE_ENV=production webpack --hide-modules --progress --colors"
+    "build": "cross-env NODE_ENV=production webpack --hide-modules --progress --colors && cd dist && cp index.html 404.html"
   },
   "repository": {
     "type": "git",
