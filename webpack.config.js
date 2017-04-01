@@ -51,6 +51,7 @@ if (isProd) {
   config.entry.vendors = ['axios', 'vue', 'vuex', 'vue-router']
   config.output = {
     path: `${__dirname}/dist`,
+    publicPath: '/',
     filename: '[name].[chunkhash:8].js',
     chunkFilename: '[name].[chunkhash:8].js'
   }
