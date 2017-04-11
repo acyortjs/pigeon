@@ -68,6 +68,7 @@ export default {
 }
 
 .header {
+  z-index: 10;
   position: relative;
   text-align: center;
 }

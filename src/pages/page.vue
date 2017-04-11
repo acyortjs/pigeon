@@ -1,12 +1,14 @@
 <template>
+<div>
 
-<div class="page">
-  <div class="top">
-    <h2>{{ post.name }}</h2>
-  </div>
-  <div class="content markdown-body" v-html="post.content"></div>
+<div class="top">
+  <p>{{ post.title }}</p>
+  <h1>{{ post.name }}</h1>
 </div>
 
+<div class="content markdown-body" v-html="post.content"></div>
+
+</div>
 </template>
 
 <script>
