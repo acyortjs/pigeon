@@ -39,3 +39,10 @@
     }
   }
 }
+
+@media screen and (max-width: 600px) {
+  .nav {
+    margin-top: 50px;
+    width: 100%;
+  }
+}

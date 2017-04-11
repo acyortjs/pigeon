@@ -141,8 +141,6 @@ export default {
 @import "../components/nav.css";
 
 .archives {
-  margin: 40px auto 0;
-
   & h2 {
     color: #000;
     font-size: 24px;
@@ -155,7 +153,8 @@ export default {
 
   & li {
     margin-bottom: 24px;
-    font-size: 15px;
+    font-size: 16px;
+    line-height: 1.4;
   }
 
   & a {
@@ -169,6 +168,17 @@ export default {
   & span {
     float: right;
     color: #666;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .archives {
+    & li > span {
+      display: block;
+      margin-top: 10px;
+      float: none;
+      font-size: 13px;
+    }
   }
 }
 

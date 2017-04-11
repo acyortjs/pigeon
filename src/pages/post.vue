@@ -119,6 +119,7 @@ export default {
 
   & h2 {
     font-size: 30px;
+    line-height: 1.4;
   }
 
   & h1 {
@@ -154,6 +155,32 @@ export default {
 
     &:hover {
       color: #333;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .top {
+    padding-top: 90px;
+
+    & h1 {
+      padding-bottom: 90px;
+      font-size: 26px;
+    }
+
+    & h2 {
+      font-size: 26px;
+      margin: 0 10px;
+    }
+  }
+
+  .author {
+    margin-top: 50px;
+
+    & img {
+      width: 60px;
+      height: 60px;
+      margin-bottom: -30px;
     }
   }
 }

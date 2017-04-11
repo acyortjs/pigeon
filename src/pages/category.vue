@@ -177,7 +177,6 @@ export default {
 <style lang="postcss">
 
 .category {
-  margin: 40px auto 0;
   max-width: 900px;
 }
 

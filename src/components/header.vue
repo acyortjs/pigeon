@@ -140,4 +140,12 @@ export default {
   }
 }
 
+@media screen and (max-width: 600px) {
+  .btns {
+    left: 14px;
+    top: 14px;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.27);
+  }
+}
+
 </style>

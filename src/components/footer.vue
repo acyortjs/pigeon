@@ -43,6 +43,7 @@ export default {
   & p {
     color: #9b9b9b;
     font-size: 13px;
+    line-height: 1.6;
   }
 
   & a {
@@ -50,6 +51,17 @@ export default {
 
     &:hover {
       text-decoration: underline;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .footer {
+    margin-top: 50px;
+    padding: 30px 14px;
+
+    & h4 {
+      margin-bottom: 10px;
     }
   }
 }

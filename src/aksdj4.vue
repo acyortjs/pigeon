@@ -86,6 +86,7 @@ body {
 .content {
   width: 96%;
   max-width: 800px;
+  margin: 50px auto 0;
 }
 h1, h2, h3, h4, h5, p {
   margin: 0;
@@ -96,6 +97,15 @@ a {
 }
 ul {
   list-style: none;
+}
+
+@media screen and (max-width: 600px) {
+  .main {
+    padding: 10px;
+  }
+  .content {
+    margin-top: 20px;
+  }
 }
 
 </style>

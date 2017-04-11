@@ -73,8 +73,4 @@ export default {
 
 <style lang="postcss">
 
-.page .top {
-  padding: 50px 0 30px;
-}
-
 </style>

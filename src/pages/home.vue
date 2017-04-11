@@ -139,7 +139,6 @@ export default {
 <style lang="postcss">
 
 .home {
-  margin: 40px auto 0;
   max-width: 900px;
 }
 
