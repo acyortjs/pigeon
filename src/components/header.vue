@@ -1,10 +1,9 @@
 <template>
 
 <div class="header" :class="className">
-  <router-link to="/">{{ config.title }}</router-link>
-  <div class="btns">
-    <button @click="toggle" :disabled="loading"></button>
-    <a v-if="className != 'list'" href="javascript:history.back()">BACK</a>
+  <div @click="toggle" class="btns">
+    <button :disabled="loading"></button>
+    <router-link v-if="className != 'index'" to="/">{{ config.title }}</router-link>
   </div>
 </div>
 
@@ -40,16 +39,18 @@ export default {
   },
 
   methods: {
-    toggle() {
-      this.setMenu(!this.menu)
+    toggle(e) {
+      if (e.target.tagName != 'A') {
+        this.setMenu(!this.menu)
+      }
     },
 
     setClass() {
       const { name } = this.$route
-      if (name == 'post' || name == 'page') {
-        return this.className = ''
+      if (name == 'home') {
+        return this.className = 'index'
       }
-      this.className = 'list'
+      this.className = ''
     },
 
     ...mapActions(['setConfig', 'setMenu'])
@@ -67,21 +68,10 @@ export default {
 }
 
 .header {
-  text-align: center;
-  background: #f5f4f2;
   position: relative;
-  padding: 20px 0 30px;
-
-  & a {
-    font-size: 20px;
-    letter-spacing: 2px;
-    color: #0f0f0f;
-  }
-
-  &.list {
-    background: transparent;
-  }
+  text-align: center;
 }
+
 .btns {
   position: absolute;
   left: 20px;
@@ -139,9 +129,9 @@ export default {
     color: #fff;
     display: inline-block;
     vertical-align: top;
-    font-size: 13px;
-    padding: 0 20px;
-    letter-spacing: 1px;
+    font-size: 14px;
+    padding: 0 14px;
+    letter-spacing: .5px;
     border-left: 1px solid #4c4c4c;
     height: 33px;
     line-height: 33px;

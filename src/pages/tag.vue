@@ -1,4 +1,10 @@
 <template>
+<div>
+
+<div class="top">
+  <p>{{ sum }} posts in total</p>
+  <h1>{{ tag.name }}</h1>
+</div>
 
 <div class="tag content">
   <Posts :posts="posts"></Posts>
@@ -16,6 +22,7 @@
   </div>
 </div>
 
+</div>
 </template>
 
 <script>
@@ -33,7 +40,8 @@ export default {
 
   data() {
     return {
-      disabled: false
+      disabled: false,
+      sum: ''
     }
   },
 
@@ -48,13 +56,14 @@ export default {
       total
     } = this
 
-    const { name } = tags.find(tag => tag.id == id)
+    const { name, count } = tags.find(tag => tag.id == id)
     document.title = `${name} - ${title}`
 
     if (page > total) {
       return this.$router.replace(`/tags/${id}`)
     }
 
+    this.sum = count
     this.getPosts()
   },
 

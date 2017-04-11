@@ -1,9 +1,13 @@
 <template>
+<div>
+
+<div class="top">
+  <p>{{ config.categories.length }} categories in total</p>
+  <h1>All Categories</h1>
+</div>
 
 <div class="categories">
   <div class="content images" v-if="config.categories">
-    <h2>All Categories</h2>
-
     <router-link
       :key="category.id"
       :to="`/categories/${category.id}`"
@@ -16,6 +20,7 @@
   </div>
 </div>
 
+</div>
 </template>
 
 <script>

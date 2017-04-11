@@ -1,7 +1,12 @@
 <template>
+<div>
+
+<div class="top">
+  <p>{{ config.posts.length }} posts in total</p>
+  <h1>Archives</h1>
+</div>
 
 <div class="archives content">
-  <h2>Archives</h2>
   <ul>
     <li v-for="post in items">
       <router-link :to="`/posts/${post.id}`">{{ post.title }}</router-link>
@@ -22,6 +27,7 @@
   </div>
 </div>
 
+</div>
 </template>
 
 <script>

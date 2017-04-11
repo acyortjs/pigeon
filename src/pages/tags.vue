@@ -1,9 +1,13 @@
 <template>
+<div>
+
+<div class="top">
+  <p>{{ config.tags.length }} tags in total</p>
+  <h1>All Tags</h1>
+</div>
 
 <div class="tags">
   <div class="content images" v-if="config.tags">
-    <h2>All Tags</h2>
-
     <router-link
       :key="tag.id"
       :to="`/tags/${tag.id}`"
@@ -16,6 +20,7 @@
   </div>
 </div>
 
+</div>
 </template>
 
 <script>

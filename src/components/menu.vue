@@ -56,8 +56,8 @@ export default {
   }
 
   & a {
-    color: #eee;
-    margin: 5px;
+    color: #ddd;
+    margin: 5px 10px;
     font-size: 15px;
     display: inline-block;
 
@@ -66,7 +66,7 @@ export default {
     }
 
     &:hover {
-      text-decoration: underline;
+      color: #fff;
     }
   }
 }

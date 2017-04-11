@@ -98,8 +98,8 @@ export default {
 
 .top {
   text-align: center;
-  background: #f5f4f2;
-  padding-top: 100px;
+  background: #f5f8fa;
+  padding-top: 120px;
   color: #000;
 
   &> p {
@@ -119,6 +119,11 @@ export default {
 
   & h2 {
     font-size: 30px;
+  }
+
+  & h1 {
+    font-size: 30px;
+    padding-bottom: 120px;
   }
 }
 .author {

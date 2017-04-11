@@ -29,7 +29,7 @@ export default {
 <style lang="postcss">
 
 .footer {
-  background: #f5f4f2;
+  background: #f5f8fa;
   padding: 30px;
   color: #000;
   margin-top: 100px;

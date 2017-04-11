@@ -1,4 +1,10 @@
 <template>
+<div>
+
+<div class="top">
+  <p>{{ config.description }}</p>
+  <h1>{{ config.title }}</h1>
+</div>
 
 <div class="home content">
   <Posts :posts="items"></Posts>
@@ -16,6 +22,7 @@
   </div>
 </div>
 
+</div>
 </template>
 
 <script>
