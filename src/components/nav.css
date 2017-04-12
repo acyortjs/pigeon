@@ -31,6 +31,7 @@
     border-top: 3px solid #333;
     position: relative;
     z-index: 1;
+    outline: none;
 
     &:disabled {
       cursor: default;
