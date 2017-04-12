@@ -24,6 +24,7 @@ export default {
 
 .notice {
   position: fixed;
+  z-index: 20;
   width: 100%;
   text-align: center;
   height: 100%;
