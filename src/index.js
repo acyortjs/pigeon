@@ -32,6 +32,10 @@ Vue.prototype.$load = function(...urls) {
 }
 
 Vue.filter('timeFormat', time => {
+  if (!time) {
+    return ''
+  }
+
   return new Date(time)
   .toString()
   .split(' ')

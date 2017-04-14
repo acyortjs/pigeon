@@ -3,9 +3,8 @@
 <div class="footer">
   <h4>&copy; {{ (new Date()).getFullYear() }} {{ config.title }}</h4>
   <p>Powered by
-    <a target="_blank" href="https://github.com/acyortjs/acyort">AcyOrt</a> &amp;
-    <a target="_blank" href="https://github.com">GitHub</a> &amp;
-    <a target="_blank" href="https://vuejs.org">Vue.js</a> &amp;
+    <a target="_blank" href="https://github.com/acyortjs/acyort">AcyOrt</a> /
+    <a target="_blank" href="https://vuejs.org">Vue.js</a> /
     <a target="_blank" href="https://unsplash.it">Unsplash It</a>
   </p>
 </div>

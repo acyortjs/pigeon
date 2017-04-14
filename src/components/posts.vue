@@ -4,10 +4,7 @@
   <li v-for="post in posts">
     <router-link :to="`/posts/${post.id}`">{{ post.title }}</router-link>
     <div class="summary" v-html="post.summary"></div>
-    <p>
-      {{ post.updated | timeFormat }} /
-      <span v-if="post.category">{{ post.category.name }}</span>
-    </p>
+    <p>{{ post.updated | timeFormat }}</p>
   </li>
 </ul>
 

@@ -2,7 +2,7 @@
 
 <div class="post">
   <div class="top">
-    <p>
+    <p v-if="page.updated">
       <template v-if="page.category">
         <router-link :to="`/categories/${page.category.id}`">{{ page.category.name }}</router-link>
       </template>
@@ -101,6 +101,7 @@ export default {
   background: #f5f8fa;
   padding-top: 120px;
   color: #000;
+  min-height: 100px;
 
   &> p {
     color: #a8a8a8;
