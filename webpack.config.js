@@ -2,6 +2,7 @@ const webpack = require('webpack')
 const WebpackMd5Hash = require('webpack-md5-hash')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin')
 const isProd = process.env.NODE_ENV === 'production'
 
 const config = {
@@ -65,6 +66,7 @@ if (isProd) {
     new HtmlWebpackPlugin({
       template: 'src/index.html',
       inject: 'body',
+      inlineSource: 'manifest+',
       minify: {
         removeComments: true,
         minifyJS: true,
@@ -72,6 +74,7 @@ if (isProd) {
         collapseWhitespace: true
       }
     }),
+    new HtmlWebpackInlineSourcePlugin(),
     new ExtractTextPlugin('[name].[contenthash:8].css')
   ]
   config.module.rules[0].options = {
