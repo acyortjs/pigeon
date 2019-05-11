@@ -1,10 +1,36 @@
 {
-  "private": true,
-  "name": "pigeon",
-  "version": "0.0.0",
-  "scripts": {},
+  "name": "@acyort/pigeon",
+  "version": "0.1.0",
+  "description": "Why is the pigeon so big",
+  "main": "index.js",
+  "files": [
+    "templates",
+    "index.js",
+    "lib"
+  ],
   "dependencies": {
+    "acyort-toc": "^2.2.2",
+    "front-matter": "^3.0.2"
+  },
+  "devDependencies": {
     "acyort-server": "^2.4.0",
-    "acyort-toc": "^2.2.2"
-  }
+    "eslint": "*",
+    "eslint-config-airbnb-base": "*",
+    "eslint-plugin-import": "*"
+  },
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/acyortjs/pigeon.git"
+  },
+  "keywords": [
+    "blog",
+    "acyort"
+  ],
+  "author": "LoeiFy <LoeiFy@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/acyortjs/pigeon/issues"
+  },
+  "homepage": "https://github.com/acyortjs/pigeon#readme"
 }
