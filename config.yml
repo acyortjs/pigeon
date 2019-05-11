@@ -1,0 +1,10 @@
+template: pigeon
+
+plugins:
+  - script.js
+
+public: /docs
+
+timezone: Asia/Shanghai
+
+language: en
