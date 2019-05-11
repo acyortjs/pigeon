@@ -1,6 +1,7 @@
 template: pigeon
 
 plugins:
+  - acyort-toc
   - script.js
 
 public: /docs
@@ -8,3 +9,5 @@ public: /docs
 timezone: Asia/Shanghai
 
 language: en
+
+source: local
