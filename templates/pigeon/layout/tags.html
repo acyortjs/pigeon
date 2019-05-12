@@ -1,0 +1,9 @@
+<p>total: {{ page.tags.length }}</p>
+
+<ul>
+{% for t in page.tags %}
+<li>
+<a href="{{ _url(t.url) }}">{{ t.name }} ({{ t.posts.length }})</a>
+</li>
+{% endfor %}
+</ul>

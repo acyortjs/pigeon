@@ -1,0 +1,9 @@
+<p>total: {{ page.categories.length }}</p>
+
+<ul>
+{% for c in page.categories %}
+<li>
+<a href="{{ _url(c.url) }}">{{ c.name }} ({{ c.posts.length }})</a>
+</li>
+{% endfor %}
+</ul>
