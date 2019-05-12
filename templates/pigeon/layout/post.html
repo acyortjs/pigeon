@@ -4,9 +4,9 @@
 <p>
   category:
   {% if page.category %}
-  <a href="/categories/{{ page.category.toLowerCase() }}/">{{ page.category }}</a>
+  <a href="{{ _url('categories/' + page.category + '/') }}">{{ page.category }}</a>
   {% else %}
-  <a href="/categories/uncategorized/">{{ __('uncategorized') }}</a>
+  <a href="{{ _url('categories/uncategorized/') }}">{{ __('uncategorized') }}</a>
   {% endif %}
 </p>
 
@@ -14,7 +14,7 @@
 <ol>
 {% for tag in page.tags %}
   <li>
-    <a href="/tags/{{ tag.toLowerCase() }}/">{{ tag }}</a>
+    <a href="{{ _url('tags/' + tag + '/') }}">{{ tag }}</a>
   </li>
 {% endfor %}
 </ol>
@@ -29,3 +29,11 @@
 
 <h5>content:</h5>
 <div>{{ page.content }}</div>
+
+<h6>paginator:</h6>
+{% if page.prev %}
+<a href="{{ _url('posts/' + page.prev + '.html') }}">{{ _title(page.prev) }}</a>
+{% endif %}
+{% if page.next %}
+<a href="{{ _url('posts/' + page.next + '.html') }}">{{ _title(page.next) }}</a>
+{% endif %}

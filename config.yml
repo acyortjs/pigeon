@@ -2,6 +2,7 @@ template: pigeon
 
 plugins:
   - acyort-toc
+  - acyort-server
   - script.js
 
 public: /docs

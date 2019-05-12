@@ -1,0 +1,12 @@
+<ul>
+{% for post in page.posts %}
+  <li>
+    <a href="{{ _url(post.url) }}">{{ post.title }}</a>
+    <div>{{ post.except }}</div>
+  </li>
+{% endfor %}
+</ul>
+
+<a{% if page.prev %} href="{{ _url(page.prev) }}"{% endif %}>prev</a>
+<span>{{ page.current }} / {{ page.total }}</span>
+<a{% if page.next %} href="{{ _url(page.next) }}"{% endif %}>next</a>
