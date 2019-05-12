@@ -11,3 +11,5 @@ timezone: Asia/Shanghai
 language: en
 
 source: local
+
+perpage: 1

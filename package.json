@@ -9,6 +9,7 @@
     "lib"
   ],
   "dependencies": {
+    "@acyort/paginator": "^0.1.2",
     "acyort-toc": "^2.2.2",
     "front-matter": "^3.0.2"
   },

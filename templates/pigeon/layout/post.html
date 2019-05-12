@@ -1,0 +1,31 @@
+<h1>{{ page.title }}</h1>
+<p>time: {{ _time(page.date, 'YYYY-MM-DD hh:mm:ss') }}</p>
+
+<p>
+  category:
+  {% if page.category %}
+  <a href="/categories/{{ page.category.toLowerCase() }}/">{{ page.category }}</a>
+  {% else %}
+  <a href="/categories/uncategorized/">{{ __('uncategorized') }}</a>
+  {% endif %}
+</p>
+
+<h2>tags:</h2>
+<ol>
+{% for tag in page.tags %}
+  <li>
+    <a href="/tags/{{ tag.toLowerCase() }}/">{{ tag }}</a>
+  </li>
+{% endfor %}
+</ol>
+
+{% if page.toc %}
+<h3>toc:</h3>
+<div>{{ page.toc }}</div>
+{% endif %}
+
+<h4>except:</h4>
+<div>{{ page.except }}</div>
+
+<h5>content:</h5>
+<div>{{ page.content }}</div>
