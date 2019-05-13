@@ -1,6 +1,6 @@
 ---
 type: page
-title: about
+title: Lorem Ipsum
 ---
 
 That's it.  Pretty simple.  There's also a drop-down option in the upper right to switch between various views:

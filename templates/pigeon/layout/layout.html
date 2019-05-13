@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+{% include 'partial/head.html' %}
+<title>{% block title %}{% endblock %}</title>
+</head>
+
+<body>
+
+<div class="header">
+  {% include 'partial/menu.html' %}
+  <p>{% block supplement %}{% endblock %}</p>
+  <h2>{% block heading %}{% endblock %}</h2>
+  {% block avatar %}{% endblock %}
+</div>
+
+<div class="content">
+{% block content %}{% endblock %}
+</div>
+
+{% include 'partial/footer.html' %}
+
+</body>
+</html>
