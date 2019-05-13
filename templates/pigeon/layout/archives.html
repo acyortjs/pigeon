@@ -1,0 +1,18 @@
+<p>total: {{ page.total }}</p>
+
+<div>
+{% for post in page.posts %}
+{% if post.title %}
+<h3>
+  {{ _time(post.date, 'MMMM DD') }}
+  <a href="{{ _url(post.url) }}">{{ post.title }}</a>
+</h3>
+{% else %}
+<h2>{{ post }}</h2>
+{% endif %}
+{% endfor %}
+</div>
+
+<a{% if page.prev %} href="{{ _url(page.prev) }}"{% endif %}>prev</a>
+<span>{{ page.current }} / {{ page.total }}</span>
+<a{% if page.next %} href="{{ _url(page.next) }}"{% endif %}>next</a>
