@@ -4,7 +4,7 @@
 {% for post in page.posts %}
 {% if post.title %}
 <h3>
-  {{ _time(post.date, 'MMMM DD') }}
+  {{ _time(post.date, 'MM-DD') }}
   <a href="{{ _url(post.url) }}">{{ post.title }}</a>
 </h3>
 {% else %}
