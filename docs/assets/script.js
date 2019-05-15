@@ -1,6 +1,8 @@
 class Query {
   constructor(dom) {
-    this.dom = document.querySelector(dom)
+    this.dom = typeof dom === 'string'
+      ? document.querySelector(dom)
+      : dom
   }
 
   addClass(name) {
@@ -24,13 +26,21 @@ class Query {
   off(e) {
     this.dom.removeEventListener(e)
   }
+
+  css(key, value) {
+    this.dom.style[key] = value
+  }
 }
 
 const $ = dom => new Query(dom)
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function ready() {
   $('.menu > span').on('click', () => {
-    $('.menu > span').toggleClass('active')
+    $(this).toggleClass('active')
     $('.menu > div').toggleClass('active')
   })
+
+  if (window.location.pathname !== '/') {
+    $('.menu > a').css('display', 'block')
+  }
 })

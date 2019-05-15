@@ -1,3 +1,18 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+{{ config.title }} / {{ page.title }}
+{% endblock %}
+
+{% block heading %}
+{{ config.title }}
+{% endblock %}
+
+{% block supplement %}
+<p>{{ config.description }}</p>
+{% endblock %}
+
+{% block content %}
 <ul>
 {% for post in page.posts %}
   <li>
@@ -7,6 +22,5 @@
 {% endfor %}
 </ul>
 
-<a{% if page.prev %} href="{{ _url(page.prev) }}"{% endif %}>prev</a>
-<span>{{ page.current }} / {{ page.total }}</span>
-<a{% if page.next %} href="{{ _url(page.next) }}"{% endif %}>next</a>
+{% include 'partial/paginator.html' %}
+{% endblock %}

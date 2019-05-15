@@ -46,6 +46,7 @@ ul {
   background: rgb(56, 56, 56);
 }
 .menu > a {
+  display: none;
   background: #000;
   padding: 0 15px;
   border-left: 1px solid #4c4c4c;
@@ -621,6 +622,39 @@ ul {
   align-items: center;
   font-size: 15px;
   color: #000;
+}
+
+.paginator {
+  position: relative;
+  margin: 70px auto 0;
+  display: flex;
+  padding: 13px 0 0;
+  justify-content: space-between;
+}
+.paginator::before {
+  content: '';
+  height: 3px;
+  background: #ddd;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.paginator a {
+  font-size: 14px;
+  color: #333;
+  padding: 9px 2px 0;
+  margin-right: 16px;
+  border-top: 3px solid #333;
+  position: relative;
+  z-index: 1;
+}
+.paginator a:not([href]) {
+  color: #888;
+  border-top: 3px solid #888;
+}
+.paginator span {
+  color: #999;
 }
 
 @media screen and (max-width: 600px) {

@@ -2,6 +2,8 @@ template: pigeon
 
 title: Pigeon
 
+description: Why is the pigeon so big
+
 plugins:
   - acyort-server
   - script.js
