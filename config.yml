@@ -3,7 +3,6 @@ template: pigeon
 title: Pigeon
 
 plugins:
-  - acyort-toc
   - acyort-server
   - script.js
 

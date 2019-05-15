@@ -154,12 +154,24 @@ ul {
   font-size: 30px;
   font-weight: 400;
 }
+.header p {
+  color: #a8a8a8;
+  font-size: 12px;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+}
+.header a {
+  color: #a8a8a8;
+}
+.header a:hover {
+  color: #000;
+}
 
 .footer {
   background: #f5f8fa;
   padding: 30px;
   color: #000;
-  margin-top: 100px;
+  margin-top: 70px;
   letter-spacing: 1.5px;
   display: flex;
   justify-content: space-between;
@@ -183,7 +195,7 @@ ul {
 .markdown-body {
   font-size: 14px;
   color: #333;
-  font-family: San Francisco, -apple-system, BlinkMacSystemFont, Microsoft Yahei, "微軟正黑體", "Microsoft JhengHei", helvetica, sans-serifsans-serif;
+  font-family: San Francisco, -apple-system, BlinkMacSystemFont, Microsoft Yahei, "微軟正黑體", "Microsoft JhengHei", helvetica, sans-serif;
   line-height: 1.6;
   word-wrap: break-word;
 }
@@ -583,6 +595,32 @@ ul {
 }
 .markdown-body hr {
   border-bottom-color: #eee;
+}
+
+.post-tags {
+  margin: 40px auto 0
+}
+.post-tags a {
+  color: #666;
+  display: inline-block;
+  margin: 5px 14px 5px 0;
+  font-size: 13px;
+  text-decoration: underline
+}
+.post-tags a:hover {
+  color: #333
+}
+
+.post-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+.post-nav a {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  color: #000;
 }
 
 @media screen and (max-width: 600px) {
