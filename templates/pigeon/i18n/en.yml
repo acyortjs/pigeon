@@ -1,9 +1,7 @@
 uncategorized: Uncategorized
-
 top: Top
 
 previous: Previous
-
 next: Next
 
 posts:
@@ -22,5 +20,5 @@ tag:
   other: '%d tags in total'
 
 categories: Categories
-
 tags: Tags
+archives: Archives
