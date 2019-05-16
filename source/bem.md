@@ -6,12 +6,7 @@ tags:
   - css
 ---
 
-An h1 header
-============
-
 Paragraphs are separated by a blank line.
-
-<!-- more -->
 
 2nd paragraph. *Italic*, **bold**, and `monospace`. Itemized lists
 look like:
@@ -28,6 +23,8 @@ content starts at 4-columns in.
 >
 > They can span multiple paragraphs,
 > if you like.
+
+<!-- more -->
 
 Use 3 dashes for an em-dash. Use 2 dashes for ranges (ex., "it's all
 in chapters 12--14"). Three dots ... will be converted to an ellipsis.

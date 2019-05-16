@@ -657,6 +657,26 @@ ul {
   color: #999;
 }
 
+.post {
+  border-bottom: 1px solid #f5f5f5;
+  padding: 30px 0 50px;
+}
+.post:last-child {
+  border-bottom: none;
+}
+.post > a {
+  color: #333;
+  font-size: 25px;
+}
+.post-except {
+  margin-top: 24px;
+}
+.post > p {
+  margin-top: 14px;
+  color: #999;
+  font-size: 13px;
+}
+
 @media screen and (max-width: 600px) {
   .container {
     padding: 10px;

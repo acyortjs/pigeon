@@ -34,8 +34,8 @@ class Query {
 
 const $ = dom => new Query(dom)
 
-document.addEventListener('DOMContentLoaded', function ready() {
-  $('.menu > span').on('click', () => {
+document.addEventListener('DOMContentLoaded', () => {
+  $('.menu > span').on('click', function click() {
     $(this).toggleClass('active')
     $('.menu > div').toggleClass('active')
   })
