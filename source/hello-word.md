@@ -3,6 +3,8 @@ title: Hello-Word
 date: 2017-02-14
 tags:
   - css
+  - js
+  - tt
 ---
 
 Use 3 dashes for an em-dash. Use 2 dashes for ranges (ex., "it's all

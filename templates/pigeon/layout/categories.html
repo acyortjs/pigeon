@@ -14,12 +14,14 @@
 
 {% block content %}
 {% if page.categories.length %}
-<div>
+<div class="img-cover">
 {% for c in page.categories %}
-<a href="{{ _url(c.url) }}">
-  <h3>{{ c.name }}</h3>
-  <p>{{ _n('posts', c.posts.length) }}</p>
-</a>
+  <a style="background-image: url(https://source.unsplash.com/480x320/?{{ c.name === 'uncategorized' ? 'default' : c.name }})" href="{{ _url(c.url) }}">
+    <div>
+      <h4>{{ c.name }}</h4>
+      <p>{{ _n('posts', c.posts.length) }}</p>
+    </div>
+  </a>
 {% endfor %}
 </div>
 {% endif %}

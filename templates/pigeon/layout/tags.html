@@ -14,12 +14,14 @@
 
 {% block content %}
 {% if page.tags.length %}
-<div>
+<div class="img-cover">
 {% for t in page.tags %}
-<a href="{{ _url(t.url) }}">
-  <h3>{{ t.name }}</h3>
-  <p>{{ _n('posts', t.posts.length) }}</p>
-</a>
+  <a style="background-image: url(https://source.unsplash.com/480x320/?{{ t.name }})" href="{{ _url(t.url) }}">
+    <div>
+      <h4>{{ t.name }}</h4>
+      <p>{{ _n('posts', t.posts.length) }}</p>
+    </div>
+  </a>
 {% endfor %}
 </div>
 {% endif %}
