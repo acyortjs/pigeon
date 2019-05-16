@@ -1,14 +1,18 @@
-<h2>{{ page.name }}</h2>
+{% extends 'layout.html' %}
 
-<ul>
-{% for post in page.posts %}
-  <li>
-    <a href="{{ _url(post.url) }}">{{ post.title }}</a>
-    <div>{{ post.except }}</div>
-  </li>
-{% endfor %}
-</ul>
+{% block title %}
+{{ config.title }} / {{ page.name }}
+{% endblock %}
 
-<a{% if page.prev %} href="{{ _url(page.prev) }}"{% endif %}>prev</a>
-<span>{{ page.current }} / {{ page.total }}</span>
-<a{% if page.next %} href="{{ _url(page.next) }}"{% endif %}>next</a>
+{% block heading %}
+{{ page.name }}
+{% endblock %}
+
+{% block supplement %}
+<p>{{ _n('posts', page.posts.length) }}</p>
+{% endblock %}
+
+{% block content %}
+{% include 'partial/posts.html' %}
+{% include 'partial/paginator.html' %}
+{% endblock %}

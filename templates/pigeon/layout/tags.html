@@ -1,9 +1,26 @@
-<p>total: {{ page.tags.length }}</p>
+{% extends 'layout.html' %}
 
-<ul>
+{% block title %}
+{{ config.title }} / {{ __('tags') }}
+{% endblock %}
+
+{% block heading %}
+{{ __('tags') }}
+{% endblock %}
+
+{% block supplement %}
+<p>{{ _n('tag', page.tags.length) }}</p>
+{% endblock %}
+
+{% block content %}
+{% if page.tags.length %}
+<div>
 {% for t in page.tags %}
-<li>
-<a href="{{ _url(t.url) }}">{{ t.name }} ({{ t.posts.length }})</a>
-</li>
+<a href="{{ _url(t.url) }}">
+  <h3>{{ t.name }}</h3>
+  <p>{{ _n('posts', t.posts.length) }}</p>
+</a>
 {% endfor %}
-</ul>
+</div>
+{% endif %}
+{% endblock %}

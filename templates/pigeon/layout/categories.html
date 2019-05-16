@@ -1,9 +1,26 @@
-<p>total: {{ page.categories.length }}</p>
+{% extends 'layout.html' %}
 
-<ul>
+{% block title %}
+{{ config.title }} / {{ __('categories') }}
+{% endblock %}
+
+{% block heading %}
+{{ __('categories') }}
+{% endblock %}
+
+{% block supplement %}
+<p>{{ _n('category', page.categories.length) }}</p>
+{% endblock %}
+
+{% block content %}
+{% if page.categories.length %}
+<div>
 {% for c in page.categories %}
-<li>
-<a href="{{ _url(c.url) }}">{{ c.name }} ({{ c.posts.length }})</a>
-</li>
+<a href="{{ _url(c.url) }}">
+  <h3>{{ c.name }}</h3>
+  <p>{{ _n('posts', c.posts.length) }}</p>
+</a>
 {% endfor %}
-</ul>
+</div>
+{% endif %}
+{% endblock %}

@@ -630,6 +630,7 @@ ul {
   display: flex;
   padding: 13px 0 0;
   justify-content: space-between;
+  width: 80%;
 }
 .paginator::before {
   content: '';
