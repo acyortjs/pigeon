@@ -545,16 +545,22 @@ ul {
   color: #333
 }
 
-.post-nav {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 50px;
+.post-nav.paginator {
+  padding: 0;
 }
-.post-nav a {
+.post-nav.paginator a {
+  margin-right: 0;
   display: flex;
   align-items: center;
-  font-size: 15px;
-  color: #000;
+}
+.post-nav.paginator a:not([href]) {
+  border-top: 0;
+}
+.nav-prev svg {
+  margin-left: -25px;
+}
+.nav-next svg {
+  margin-right: -25px;
 }
 
 .paginator {
