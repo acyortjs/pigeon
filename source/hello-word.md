@@ -1,5 +1,5 @@
 ---
-title: Hello-Word
+title: Hello Word
 date: 2017-02-14
 tags:
   - css

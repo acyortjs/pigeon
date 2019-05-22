@@ -74,6 +74,9 @@ const posts = () => {
     prev = name
     loading = true
     $('.menu button').attr('disabled', true)
+    $('.menu > span').removeClass('active')
+    $('.menu > div').removeClass('active')
+    window.scrollTo(0, 0)
 
     window.fetch(name)
       .then(res => res.text())
@@ -100,7 +103,7 @@ const posts = () => {
 
         checkMenu()
         loading = false
-        $('.menu button').removeAttr('disabled')
+        setTimeout(() => { $('.menu button').removeAttr('disabled') }, 1000)
       })
       .catch(({ message }) => {
         loading = false
