@@ -55,7 +55,8 @@ class Query {
 const $ = dom => new Query(dom)
 
 const checkMenu = () => {
-  if (window.location.pathname !== '/') {
+  const { pathname } = window.location
+  if (pathname !== '/' && !pathname.includes('/page/')) {
     $('.menu > a').css('display', 'block')
   } else {
     $('.menu > a').css('display', 'none')

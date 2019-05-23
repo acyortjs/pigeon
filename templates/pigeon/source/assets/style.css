@@ -195,7 +195,8 @@ ul {
 
 .content {
   margin: 50px auto 0;
-  width: 900px;
+  max-width: 900px;
+  width: 94%;
 }
 .markdown-body {
   font-size: 14px;
@@ -539,6 +540,7 @@ ul {
   margin-right: 0;
   display: flex;
   align-items: center;
+  border-top: none;
 }
 .post-nav.paginator a:not([href]) {
   border-top: 0;
@@ -638,8 +640,8 @@ ul {
   text-align: center;
   background-color: #e5e5e5;
   background-size: cover;
-  border-radius: 3px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, .4);
+  border-radius: 1px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
   color: #fff;
 }
 .img-cover a::before {
@@ -650,8 +652,8 @@ ul {
   width: 100%;
   height: 100%;
   transition: all 1s ease;
-  background: rgba(0, 0, 0, .5);
-  opacity: 0;
+  background: rgba(0, 0, 0, .7);
+  opacity: .4;
 }
 .img-cover a:hover::before {
   opacity: 1;
@@ -676,11 +678,36 @@ ul {
   .header {
     height: 240px;
   }
+  .header h2 {
+    font-size: 24px;
+  }
+  .content {
+    margin-top: 30px;
+  }
   .menu {
     left: 24px;
     top: 24px;
   }
   .menu > div a {
     display: block;
+  }
+  .footer {
+    padding: 20px;
+    font-size: 13px;
+    margin-top: 50px;
+  }
+  .post {
+    padding: 20px 0 30px;
+  }
+  .post > a {
+    font-size: 20px;
+  }
+  .paginator {
+    width: 94%;
+    font-size: 13px;
+    margin-top: 50px;
+  }
+  .post-nav {
+    display: none;
   }
 }
