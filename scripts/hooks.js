@@ -1,4 +1,8 @@
+const { join } = require('path')
+
 module.exports = (acyort) => {
+  const { base, public: publicDir } = acyort.config.get()
+
   acyort.hooks.tap('pigeon_after_markdown', (markdown) => {
     const chinese = markdown.find(({ name }) => name === 'chinese.md')
     chinese.content = chinese.content.replace('中文', '中文文章')
@@ -10,6 +14,7 @@ module.exports = (acyort) => {
   })
 
   acyort.hooks.tap('pigeon_after_render', () => {
+    acyort.fs.outputFileSync(join(base, publicDir, 'CNAME'), 'aksdj4.am0200.com')
     acyort.logger.info('done')
   })
 }
