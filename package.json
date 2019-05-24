@@ -19,7 +19,8 @@
     "eslint-plugin-import": "*"
   },
   "scripts": {
-    "start": "acyort server"
+    "start": "acyort server",
+    "build": "rm -rf docs && acyort flow"
   },
   "repository": {
     "type": "git",
