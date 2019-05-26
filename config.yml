@@ -23,6 +23,6 @@ timezone: Asia/Shanghai
 
 language: en
 
-source: local
+source: source
 
 perpage: 3
