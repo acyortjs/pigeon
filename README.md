@@ -75,3 +75,13 @@ $ acyort flow
 # width acyort-server
 $ acyort server
 ```
+
+## Hooks
+
+Provides 3 hooks
+
+name | arguments | description
+--- | --- | ---
+pigeon_after_markdown | ([{ name, content }]) | after get markdown content
+pigeon_before_render | ({ archives, posts, pages, ... }) | before render html
+pigeon_after_render | ([{ name, content }], { archives, posts, pages, ... }) | after render html
