@@ -1,6 +1,6 @@
 {
   "name": "@acyort/pigeon",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Why is the pigeon so big",
   "main": "index.js",
   "files": [
@@ -10,6 +10,7 @@
   ],
   "dependencies": {
     "@acyort/paginator": "^0.1.2",
+    "axios": "^0.19.0",
     "front-matter": "^3.0.2"
   },
   "devDependencies": {
@@ -19,7 +20,7 @@
     "eslint-plugin-import": "*"
   },
   "scripts": {
-    "start": "acyort server",
+    "start": "TOKEN=de8919195a05bd0c3e3c0d5b5bcfd218bc606694 acyort server",
     "build": "rm -rf docs && acyort flow"
   },
   "repository": {

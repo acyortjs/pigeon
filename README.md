@@ -34,6 +34,8 @@ menu: # website menu
   archives: /archives/
 
 source: # markdown content path, default `source`
+
+repository: user/repo # use github issues content
 ```
 
 **Writing**
@@ -82,6 +84,7 @@ Provides 3 hooks
 
 name | arguments | description
 --- | --- | ---
+pigeon_after_fetch | (issues) | after get github issues
 pigeon_after_markdown | ([{ name, content }]) | after get markdown content
 pigeon_before_render | ({ archives, posts, pages, ... }) | before render html
 pigeon_after_render | ([{ name, content }], { archives, posts, pages, ... }) | after render html
