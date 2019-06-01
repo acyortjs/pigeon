@@ -20,7 +20,7 @@ more: https://acyort.js.org/docs/configuration/
 # config.yml
 
 # required
-template: '@acyort/pigeon'
+template: '@acyort/pigeon' # built-in theme
 plugin:
   - '@acyort/pigeon'
 
@@ -76,15 +76,18 @@ $ acyort flow
 
 # width acyort-server
 $ acyort server
+
+# github token
+$ TOKEN=your github token acyort flow
 ```
 
 ## Hooks
 
-Provides 3 hooks
+Provides 4 hooks
 
 name | arguments | description
 --- | --- | ---
-pigeon_after_fetch | (issues) | after get github issues
+pigeon_after_fetch | (issues) | after get github issues(only for github issues)
 pigeon_after_markdown | ([{ name, content }]) | after get markdown content
 pigeon_before_render | ({ archives, posts, pages, ... }) | before render html
 pigeon_after_render | ([{ name, content }], { archives, posts, pages, ... }) | after render html
