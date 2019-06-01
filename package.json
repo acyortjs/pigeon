@@ -20,7 +20,7 @@
     "eslint-plugin-import": "*"
   },
   "scripts": {
-    "start": "TOKEN=de8919195a05bd0c3e3c0d5b5bcfd218bc606694 acyort server",
+    "start": "acyort server",
     "build": "rm -rf docs && acyort flow"
   },
   "repository": {
